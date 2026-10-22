@@ -1,0 +1,2 @@
+Accuracy,F1_Score,Recall,Precision,AUPRC,ROC_AUC,True_Positives,False_Positives,True_Negatives,False_Negatives,Decision_Threshold,Training_Time_Sec
+99.94%,75.79%,69.23%,83.72%,75.13%,99.29%,36,7,39941,16,0.3862,3.11

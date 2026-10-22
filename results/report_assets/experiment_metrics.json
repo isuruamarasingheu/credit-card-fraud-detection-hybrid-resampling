@@ -1,0 +1,171 @@
+{
+    "dataset_info": {
+        "raw_rows": 284807,
+        "raw_cols": 30,
+        "duplicates_removed": 9144,
+        "clean_rows": 275663,
+        "clean_fraud": 473,
+        "fraud_ratio_pct": 0.1716
+    },
+    "experiment_1_baseline_vs_bcbsmote": [
+        {
+            "Method": "Baseline (No Resampling)",
+            "Accuracy": 0.999419585366296,
+            "F1_Score": 0.8117647058823529,
+            "AUPRC": 0.8209132650681161,
+            "MCC": 0.8171702979598291,
+            "Recall": 0.7263157894736842,
+            "Precision": 0.92,
+            "TN": 55032,
+            "FP": 6,
+            "FN": 26,
+            "TP": 69,
+            "Runtime_s": 16.8
+        },
+        {
+            "Method": "Hybrid BCBSMOTE (Proposed)",
+            "Accuracy": 0.9993651714943863,
+            "F1_Score": 0.8,
+            "AUPRC": 0.7990687029954179,
+            "MCC": 0.8026477046340691,
+            "Recall": 0.7368421052631579,
+            "Precision": 0.875,
+            "TN": 55028,
+            "FP": 10,
+            "FN": 25,
+            "TP": 70,
+            "Runtime_s": 18.46
+        }
+    ],
+    "cost_sensitive_analysis": {
+        "optimal_threshold": 0.1387,
+        "min_financial_loss": 8700.0,
+        "default_financial_loss": 12590.0,
+        "financial_savings": 3890.0
+    },
+    "experiment_2_ablation_study": [
+        {
+            "Configuration": "1. Baseline (No Resampling)",
+            "F1_Score": 0.8047337278106509,
+            "AUPRC": 0.8191442076406714,
+            "MCC": 0.8107412381781993,
+            "Recall": 0.7157894736842105,
+            "Precision": 0.918918918918919,
+            "Training_Time_s": 9.86
+        },
+        {
+            "Configuration": "2. Tomek Links Only",
+            "F1_Score": 0.8092485549132948,
+            "AUPRC": 0.8038873833890582,
+            "MCC": 0.8128982607738887,
+            "Recall": 0.7368421052631579,
+            "Precision": 0.8974358974358975,
+            "Training_Time_s": 9.79
+        },
+        {
+            "Configuration": "3. Borderline-SMOTE Only",
+            "F1_Score": 0.8,
+            "AUPRC": 0.8163784009246198,
+            "MCC": 0.800914967850893,
+            "Recall": 0.7578947368421053,
+            "Precision": 0.8470588235294118,
+            "Training_Time_s": 11.14
+        },
+        {
+            "Configuration": "4. Full Proposed BCBSMOTE",
+            "F1_Score": 0.8045977011494253,
+            "AUPRC": 0.7969811198479004,
+            "MCC": 0.807724364099187,
+            "Recall": 0.7368421052631579,
+            "Precision": 0.8860759493670886,
+            "Training_Time_s": 11.59
+        }
+    ],
+    "experiment_3_classifier_benchmark": [
+        {
+            "Classifier": "Logistic Regression",
+            "Accuracy": 0.9991112400921408,
+            "F1_Score": 0.7632850241545893,
+            "AUPRC": 0.7292649368908516,
+            "MCC": 0.7654381628228191,
+            "Recall": 0.8315789473684211,
+            "Precision": 0.7053571428571429,
+            "Runtime_s": 0.79
+        },
+        {
+            "Classifier": "Random Forest (Baseline)",
+            "Accuracy": 0.9993651714943863,
+            "F1_Score": 0.8,
+            "AUPRC": 0.7990687029954179,
+            "MCC": 0.8026477046340691,
+            "Recall": 0.7368421052631579,
+            "Precision": 0.875,
+            "Runtime_s": 16.15
+        },
+        {
+            "Classifier": "XGBoost",
+            "Accuracy": 0.9993651714943863,
+            "F1_Score": 0.7953216374269005,
+            "AUPRC": 0.8209972627331572,
+            "MCC": 0.799976379102065,
+            "Recall": 0.7157894736842105,
+            "Precision": 0.8947368421052632,
+            "Runtime_s": 1.39
+        },
+        {
+            "Classifier": "Balanced Random Forest",
+            "Accuracy": 0.9862695663214409,
+            "F1_Score": 0.18162162162162163,
+            "AUPRC": 0.725740142584404,
+            "MCC": 0.2965438291698403,
+            "Recall": 0.8842105263157894,
+            "Precision": 0.10120481927710843,
+            "Runtime_s": 2.04
+        }
+    ],
+    "experiment_4a_noise_stress_test": [
+        {
+            "Noise_Level": "0%",
+            "F1_Score": 0.7976878612716763,
+            "AUPRC": 0.7964420817360663,
+            "MCC": 0.8012630885702368,
+            "Recall": 0.7263157894736842,
+            "Precision": 0.8846153846153846
+        },
+        {
+            "Noise_Level": "1%",
+            "F1_Score": 0.5551020408163265,
+            "AUPRC": 0.6186572020399919,
+            "MCC": 0.5687398802161057,
+            "Recall": 0.7157894736842105,
+            "Precision": 0.4533333333333333
+        },
+        {
+            "Noise_Level": "5%",
+            "F1_Score": 0.7861271676300579,
+            "AUPRC": 0.781549017997817,
+            "MCC": 0.7896279163665849,
+            "Recall": 0.7157894736842105,
+            "Precision": 0.8717948717948718
+        },
+        {
+            "Noise_Level": "10%",
+            "F1_Score": 0.8022598870056498,
+            "AUPRC": 0.768638755877776,
+            "MCC": 0.8041224380216758,
+            "Recall": 0.7473684210526316,
+            "Precision": 0.8658536585365854
+        }
+    ],
+    "experiment_4b_feature_pruning_test": [
+        {
+            "Scenario": "Critical Features Withheld (V14, V17, V12)",
+            "F1_Score": 0.7530864197530864,
+            "AUPRC": 0.7784620432559295,
+            "MCC": 0.7642693579883681,
+            "Recall": 0.6421052631578947,
+            "Precision": 0.9104477611940298
+        }
+    ],
+    "total_execution_time_s": 173.05
+}
