@@ -1,0 +1,1212 @@
+{
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python_version": "3.11.9",
+    "packages": {
+        "sklearn": "1.7.2",
+        "imblearn": "0.14.2",
+        "xgboost": "3.2.0",
+        "pandas": "2.3.2",
+        "numpy": "1.26.4"
+    },
+    "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+    ],
+    "dataset_info": {
+        "raw_rows": 284807,
+        "raw_cols": 31,
+        "raw_frauds": 492,
+        "exact_duplicates_removed": 1081,
+        "clean_rows": 283726,
+        "clean_frauds": 473,
+        "clean_genuine": 283253
+    },
+    "experiment_runtimes_seconds": {
+        "E1_main_table": 1995.16,
+        "E2_label_noise": 6686.71,
+        "E3_feature_removal": 2188.32,
+        "E4_dimensionality": 4985.28,
+        "E5_cost_threshold": 2808.42,
+        "E6_scaling": 691.6,
+        "E7_paysim": 375.01
+    },
+    "total_runtime_seconds": 19736.54,
+    "total_runtime_minutes": 328.94,
+    "resampling_audit_log": [
+        {
+            "experiment": "E1",
+            "method": "2. Tomek Links Only + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3a. Borderline-SMOTE (ratio=0.05) + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3b. Borderline-SMOTE (ratio=0.02) + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "4a. BCBSMOTE (ratio=0.05) + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E1",
+            "method": "4b. BCBSMOTE (ratio=0.02) + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 4152
+        },
+        {
+            "experiment": "E1",
+            "method": "6. XGBoost + BCBSMOTE (ratio=0.05)",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E1",
+            "method": "2. Tomek Links Only + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3a. Borderline-SMOTE (ratio=0.05) + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3b. Borderline-SMOTE (ratio=0.02) + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "4a. BCBSMOTE (ratio=0.05) + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E1",
+            "method": "4b. BCBSMOTE (ratio=0.02) + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 4152
+        },
+        {
+            "experiment": "E1",
+            "method": "6. XGBoost + BCBSMOTE (ratio=0.05)",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E1",
+            "method": "2. Tomek Links Only + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3a. Borderline-SMOTE (ratio=0.05) + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3b. Borderline-SMOTE (ratio=0.02) + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "4a. BCBSMOTE (ratio=0.05) + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E1",
+            "method": "4b. BCBSMOTE (ratio=0.02) + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 4153
+        },
+        {
+            "experiment": "E1",
+            "method": "6. XGBoost + BCBSMOTE (ratio=0.05)",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E1",
+            "method": "2. Tomek Links Only + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3a. Borderline-SMOTE (ratio=0.05) + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3b. Borderline-SMOTE (ratio=0.02) + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "4a. BCBSMOTE (ratio=0.05) + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E1",
+            "method": "4b. BCBSMOTE (ratio=0.02) + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 4153
+        },
+        {
+            "experiment": "E1",
+            "method": "6. XGBoost + BCBSMOTE (ratio=0.05)",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E1",
+            "method": "2. Tomek Links Only + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3a. Borderline-SMOTE (ratio=0.05) + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "3b. Borderline-SMOTE (ratio=0.02) + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E1",
+            "method": "4a. BCBSMOTE (ratio=0.05) + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E1",
+            "method": "4b. BCBSMOTE (ratio=0.02) + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 4152
+        },
+        {
+            "experiment": "E1",
+            "method": "6. XGBoost + BCBSMOTE (ratio=0.05)",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Symmetric 0%",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Symmetric 1%",
+            "majority_removed_tomek": 1088,
+            "synthetic_generated": 8505
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Symmetric 5%",
+            "majority_removed_tomek": 5224,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Symmetric 10%",
+            "majority_removed_tomek": 9946,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Fraud-Only 10%",
+            "majority_removed_tomek": 32,
+            "synthetic_generated": 10990
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Fraud-Only 20%",
+            "majority_removed_tomek": 48,
+            "synthetic_generated": 11029
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Fraud-Only 30%",
+            "majority_removed_tomek": 55,
+            "synthetic_generated": 11128
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Symmetric 0%",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Symmetric 1%",
+            "majority_removed_tomek": 1105,
+            "synthetic_generated": 8561
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Symmetric 5%",
+            "majority_removed_tomek": 5322,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Symmetric 10%",
+            "majority_removed_tomek": 9984,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Fraud-Only 10%",
+            "majority_removed_tomek": 31,
+            "synthetic_generated": 10990
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Fraud-Only 20%",
+            "majority_removed_tomek": 48,
+            "synthetic_generated": 11158
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Fraud-Only 30%",
+            "majority_removed_tomek": 54,
+            "synthetic_generated": 11129
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Symmetric 0%",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Symmetric 1%",
+            "majority_removed_tomek": 1161,
+            "synthetic_generated": 8426
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Symmetric 5%",
+            "majority_removed_tomek": 5337,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Symmetric 10%",
+            "majority_removed_tomek": 10151,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Fraud-Only 10%",
+            "majority_removed_tomek": 32,
+            "synthetic_generated": 10990
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Fraud-Only 20%",
+            "majority_removed_tomek": 41,
+            "synthetic_generated": 11029
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Fraud-Only 30%",
+            "majority_removed_tomek": 48,
+            "synthetic_generated": 11126
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Symmetric 0%",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Symmetric 1%",
+            "majority_removed_tomek": 1125,
+            "synthetic_generated": 8593
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Symmetric 5%",
+            "majority_removed_tomek": 5172,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Symmetric 10%",
+            "majority_removed_tomek": 10020,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Fraud-Only 10%",
+            "majority_removed_tomek": 27,
+            "synthetic_generated": 10990
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Fraud-Only 20%",
+            "majority_removed_tomek": 39,
+            "synthetic_generated": 11029
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Fraud-Only 30%",
+            "majority_removed_tomek": 44,
+            "synthetic_generated": 11125
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Symmetric 0%",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Symmetric 1%",
+            "majority_removed_tomek": 1113,
+            "synthetic_generated": 8462
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Symmetric 5%",
+            "majority_removed_tomek": 5272,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Symmetric 10%",
+            "majority_removed_tomek": 10102,
+            "synthetic_generated": 0
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Fraud-Only 10%",
+            "majority_removed_tomek": 29,
+            "synthetic_generated": 10900
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Fraud-Only 20%",
+            "majority_removed_tomek": 39,
+            "synthetic_generated": 11155
+        },
+        {
+            "experiment": "E2",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Fraud-Only 30%",
+            "majority_removed_tomek": 44,
+            "synthetic_generated": 11124
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Control: All Features",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Dynamic Top 3 Removed",
+            "majority_removed_tomek": 24,
+            "synthetic_generated": 10950
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Hard-Coded (V14, V17, V12) Removed",
+            "majority_removed_tomek": 24,
+            "synthetic_generated": 10950
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Control: All Features",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Dynamic Top 3 Removed",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Hard-Coded (V14, V17, V12) Removed",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Control: All Features",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Dynamic Top 3 Removed",
+            "majority_removed_tomek": 22,
+            "synthetic_generated": 10950
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Hard-Coded (V14, V17, V12) Removed",
+            "majority_removed_tomek": 22,
+            "synthetic_generated": 10950
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Control: All Features",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Dynamic Top 3 Removed",
+            "majority_removed_tomek": 22,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Hard-Coded (V14, V17, V12) Removed",
+            "majority_removed_tomek": 22,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Control: All Features",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Dynamic Top 3 Removed",
+            "majority_removed_tomek": 16,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E3",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Hard-Coded (V14, V17, V12) Removed",
+            "majority_removed_tomek": 16,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 0,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 0,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": 16,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 0,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 1,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 1,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": 14,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 1,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": 9,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 2,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 2,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": 13,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 2,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": 10,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 3,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 3,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": 19,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 3,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": 14,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 4,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "+0 noise dims",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 4,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "+20 noise dims",
+            "majority_removed_tomek": 12,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E4",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 4,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E4",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "+100 noise dims",
+            "majority_removed_tomek": 9,
+            "synthetic_generated": 10962
+        },
+        {
+            "experiment": "E5",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E5",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E5",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E5",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E5",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 0,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 0,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 0,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 1,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 1,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 1,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": 20,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 2,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 2,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 2,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 3,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 3,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 3,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": 17,
+            "synthetic_generated": 10951
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 4,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Scaled Time & Amount",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E6",
+            "method": "Borderline-SMOTE + RF",
+            "seed": 4,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E6",
+            "method": "BCBSMOTE + RF",
+            "seed": 4,
+            "scenario": "Unscaled (Raw)",
+            "majority_removed_tomek": 18,
+            "synthetic_generated": 10952
+        },
+        {
+            "experiment": "E7",
+            "method": "Borderline-SMOTE",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E7",
+            "method": "BCBSMOTE-approx",
+            "seed": 0,
+            "scenario": "default",
+            "majority_removed_tomek": 86,
+            "synthetic_generated": 9508
+        },
+        {
+            "experiment": "E7",
+            "method": "Borderline-SMOTE",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E7",
+            "method": "BCBSMOTE-approx",
+            "seed": 1,
+            "scenario": "default",
+            "majority_removed_tomek": 85,
+            "synthetic_generated": 9508
+        },
+        {
+            "experiment": "E7",
+            "method": "Borderline-SMOTE",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E7",
+            "method": "BCBSMOTE-approx",
+            "seed": 2,
+            "scenario": "default",
+            "majority_removed_tomek": 80,
+            "synthetic_generated": 9506
+        },
+        {
+            "experiment": "E7",
+            "method": "Borderline-SMOTE",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E7",
+            "method": "BCBSMOTE-approx",
+            "seed": 3,
+            "scenario": "default",
+            "majority_removed_tomek": 74,
+            "synthetic_generated": 9509
+        },
+        {
+            "experiment": "E7",
+            "method": "Borderline-SMOTE",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": null,
+            "synthetic_generated": null
+        },
+        {
+            "experiment": "E7",
+            "method": "BCBSMOTE-approx",
+            "seed": 4,
+            "scenario": "default",
+            "majority_removed_tomek": 86,
+            "synthetic_generated": 9508
+        }
+    ],
+    "audit_warnings_zero_synthetic": [
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 0, Symmetric 5%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 0, Symmetric 10%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 1, Symmetric 5%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 1, Symmetric 10%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 2, Symmetric 5%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 2, Symmetric 10%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 3, Symmetric 5%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 3, Symmetric 10%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 4, Symmetric 5%)",
+        "[AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 4, Symmetric 10%)"
+    ]
+}

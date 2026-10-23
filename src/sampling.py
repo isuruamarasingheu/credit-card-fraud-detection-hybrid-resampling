@@ -102,6 +102,7 @@ class TomekLinksUndersampler:
             self.removed_indices_ = np.array([], dtype=int)
             
         n_removed = len(self.removed_indices_)
+        self.n_removed_ = n_removed
         print(f"[TomekLinks] Removed {n_removed:,} noise-generating majority instances from Tomek links.")
         print(f"[TomekLinks] Remaining majority: {len(X_maj) - n_removed:,}, Minority: {len(X_min):,}")
         
@@ -281,8 +282,10 @@ class BCBSMOTEOversampler:
             y_synth = np.ones(len(X_synth), dtype=np.int32)
             X_res = np.vstack([X_arr, X_synth])
             y_res = np.concatenate([y_arr, y_synth])
+            self.n_synthetic_ = len(X_synth)
             print(f"[BCBSMOTE] Successfully generated {len(X_synth):,} synthetic minority samples.")
         else:
+            self.n_synthetic_ = 0
             X_res, y_res = X_arr, y_arr
             
         print(f"[BCBSMOTE] Final resampled dataset: {len(X_res):,} samples (Normal: {np.sum(y_res==0):,}, Fraud: {np.sum(y_res==1):,})")
@@ -317,6 +320,8 @@ class HybridTomekBCBSMOTE:
         X_tl, y_tl = self.undersampler.fit_resample(X, y)
         print("\n=== Step 2: Applying BIRCH Clustering Borderline SMOTE (BCBSMOTE) ===")
         X_res, y_res = self.oversampler.fit_resample(X_tl, y_tl)
+        self.n_removed_ = getattr(self.undersampler, 'n_removed_', len(getattr(self.undersampler, 'removed_indices_', [])))
+        self.n_synthetic_ = getattr(self.oversampler, 'n_synthetic_', 0)
         return X_res, y_res
 
 

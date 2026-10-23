@@ -1,0 +1,308 @@
+2026-10-23 16:20:02,272 [INFO] STARTING PHASE 3 FINAL EXPERIMENTS EXECUTION (V2)
+2026-10-23 16:20:02,272 [INFO] Loading European Cardholders dataset from archive/creditcard.csv...
+2026-10-23 16:20:08,259 [INFO] ULB Loaded: raw=284,807 rows (492 frauds). Exact duplicates removed=1,081. Clean=283,726 rows (473 frauds).
+2026-10-23 16:20:08,293 [INFO] ======================================================================
+2026-10-23 16:20:08,293 [INFO] EXPERIMENT 1: MAIN TABLE (Seeds 0-4, Ratios 0.05 and 0.02)
+2026-10-23 16:20:08,293 [INFO] ======================================================================
+2026-10-23 16:21:18,829 [INFO] [E1] Seed=0 | 1. Plain Random Forest (No Resampling) | F1=0.8902 | AUPRC=0.8730 | Rec=0.8105 | Prec=0.9872 (70.1s)
+2026-10-23 16:22:36,701 [INFO] [E1] Seed=0 | 2. Tomek Links Only + RF | F1=0.8914 | AUPRC=0.8794 | Rec=0.8211 | Prec=0.9750 (77.8s)
+2026-10-23 16:23:15,355 [INFO] [E1] Seed=0 | 3a. Borderline-SMOTE (ratio=0.05) + RF | F1=0.8989 | AUPRC=0.8909 | Rec=0.8421 | Prec=0.9639 (38.6s)
+2026-10-23 16:23:48,199 [INFO] [E1] Seed=0 | 3b. Borderline-SMOTE (ratio=0.02) + RF | F1=0.8939 | AUPRC=0.8887 | Rec=0.8421 | Prec=0.9524 (32.8s)
+2026-10-23 16:24:56,082 [INFO] [E1] Seed=0 | 4a. BCBSMOTE (ratio=0.05) + RF | F1=0.8902 | AUPRC=0.8792 | Rec=0.8105 | Prec=0.9872 (67.8s)
+2026-10-23 16:26:05,732 [INFO] [E1] Seed=0 | 4b. BCBSMOTE (ratio=0.02) + RF | F1=0.8902 | AUPRC=0.8804 | Rec=0.8105 | Prec=0.9872 (69.6s)
+2026-10-23 16:26:08,883 [INFO] [E1] Seed=0 | 5. XGBoost (No Resampling, scale_pos_weight) | F1=0.8223 | AUPRC=0.8630 | Rec=0.8526 | Prec=0.7941 (3.1s)
+2026-10-23 16:26:11,348 [INFO] [E1] Seed=0 | 6. XGBoost + BCBSMOTE (ratio=0.05) | F1=0.8864 | AUPRC=0.8896 | Rec=0.8211 | Prec=0.9630 (2.4s)
+2026-10-23 16:26:13,018 [INFO] [E1] Seed=0 | 7. Logistic Regression (class_weight=balanced) | F1=0.1089 | AUPRC=0.7872 | Rec=0.9053 | Prec=0.0580 (1.6s)
+2026-10-23 16:26:17,207 [INFO] [E1] Seed=0 | 8. Balanced Random Forest | F1=0.1898 | AUPRC=0.8472 | Rec=0.9053 | Prec=0.1060 (4.1s)
+2026-10-23 16:27:21,567 [INFO] [E1] Seed=1 | 1. Plain Random Forest (No Resampling) | F1=0.8193 | AUPRC=0.7884 | Rec=0.7158 | Prec=0.9577 (64.0s)
+2026-10-23 16:28:24,724 [INFO] [E1] Seed=1 | 2. Tomek Links Only + RF | F1=0.8284 | AUPRC=0.7866 | Rec=0.7368 | Prec=0.9459 (63.1s)
+2026-10-23 16:28:54,184 [INFO] [E1] Seed=1 | 3a. Borderline-SMOTE (ratio=0.05) + RF | F1=0.8391 | AUPRC=0.7976 | Rec=0.7684 | Prec=0.9241 (29.4s)
+2026-10-23 16:29:50,937 [INFO] [E1] Seed=1 | 3b. Borderline-SMOTE (ratio=0.02) + RF | F1=0.8409 | AUPRC=0.7971 | Rec=0.7789 | Prec=0.9136 (56.7s)
+2026-10-23 16:30:57,761 [INFO] [E1] Seed=1 | 4a. BCBSMOTE (ratio=0.05) + RF | F1=0.8333 | AUPRC=0.7823 | Rec=0.7368 | Prec=0.9589 (66.8s)
+2026-10-23 16:32:07,794 [INFO] [E1] Seed=1 | 4b. BCBSMOTE (ratio=0.02) + RF | F1=0.8333 | AUPRC=0.7828 | Rec=0.7368 | Prec=0.9589 (70.0s)
+2026-10-23 16:32:44,939 [INFO] [E1] Seed=1 | 5. XGBoost (No Resampling, scale_pos_weight) | F1=0.7766 | AUPRC=0.7890 | Rec=0.7684 | Prec=0.7849 (37.1s)
+2026-10-23 16:32:47,461 [INFO] [E1] Seed=1 | 6. XGBoost + BCBSMOTE (ratio=0.05) | F1=0.8521 | AUPRC=0.8024 | Rec=0.7579 | Prec=0.9730 (2.5s)
+2026-10-23 16:32:48,397 [INFO] [E1] Seed=1 | 7. Logistic Regression (class_weight=balanced) | F1=0.1266 | AUPRC=0.6680 | Rec=0.8842 | Prec=0.0682 (0.9s)
+2026-10-23 16:32:50,498 [INFO] [E1] Seed=1 | 8. Balanced Random Forest | F1=0.2042 | AUPRC=0.7206 | Rec=0.8211 | Prec=0.1166 (2.1s)
+2026-10-23 16:33:49,076 [INFO] [E1] Seed=2 | 1. Plain Random Forest (No Resampling) | F1=0.8372 | AUPRC=0.8054 | Rec=0.7579 | Prec=0.9351 (58.3s)
+2026-10-23 16:34:55,850 [INFO] [E1] Seed=2 | 2. Tomek Links Only + RF | F1=0.8391 | AUPRC=0.7983 | Rec=0.7684 | Prec=0.9241 (66.7s)
+2026-10-23 16:35:53,428 [INFO] [E1] Seed=2 | 3a. Borderline-SMOTE (ratio=0.05) + RF | F1=0.8249 | AUPRC=0.8104 | Rec=0.7684 | Prec=0.8902 (57.5s)
+2026-10-23 16:36:55,125 [INFO] [E1] Seed=2 | 3b. Borderline-SMOTE (ratio=0.02) + RF | F1=0.8315 | AUPRC=0.8055 | Rec=0.7789 | Prec=0.8916 (61.6s)
+2026-10-23 16:37:55,292 [INFO] [E1] Seed=2 | 4a. BCBSMOTE (ratio=0.05) + RF | F1=0.8235 | AUPRC=0.7915 | Rec=0.7368 | Prec=0.9333 (60.1s)
+2026-10-23 16:39:06,944 [INFO] [E1] Seed=2 | 4b. BCBSMOTE (ratio=0.02) + RF | F1=0.8235 | AUPRC=0.7924 | Rec=0.7368 | Prec=0.9333 (71.6s)
+2026-10-23 16:39:45,590 [INFO] [E1] Seed=2 | 5. XGBoost (No Resampling, scale_pos_weight) | F1=0.7692 | AUPRC=0.8222 | Rec=0.7895 | Prec=0.7500 (38.6s)
+2026-10-23 16:39:47,900 [INFO] [E1] Seed=2 | 6. XGBoost + BCBSMOTE (ratio=0.05) | F1=0.8068 | AUPRC=0.7783 | Rec=0.7474 | Prec=0.8765 (2.2s)
+2026-10-23 16:39:48,981 [INFO] [E1] Seed=2 | 7. Logistic Regression (class_weight=balanced) | F1=0.1276 | AUPRC=0.6916 | Rec=0.9053 | Prec=0.0686 (1.0s)
+2026-10-23 16:39:51,031 [INFO] [E1] Seed=2 | 8. Balanced Random Forest | F1=0.2388 | AUPRC=0.7252 | Rec=0.8737 | Prec=0.1383 (2.0s)
+2026-10-23 16:40:54,488 [INFO] [E1] Seed=3 | 1. Plain Random Forest (No Resampling) | F1=0.8471 | AUPRC=0.8023 | Rec=0.7579 | Prec=0.9600 (63.2s)
+2026-10-23 16:42:00,400 [INFO] [E1] Seed=3 | 2. Tomek Links Only + RF | F1=0.8439 | AUPRC=0.7901 | Rec=0.7684 | Prec=0.9359 (65.8s)
+2026-10-23 16:42:45,347 [INFO] [E1] Seed=3 | 3a. Borderline-SMOTE (ratio=0.05) + RF | F1=0.8457 | AUPRC=0.8064 | Rec=0.7789 | Prec=0.9250 (44.9s)
+2026-10-23 16:43:36,615 [INFO] [E1] Seed=3 | 3b. Borderline-SMOTE (ratio=0.02) + RF | F1=0.8457 | AUPRC=0.8194 | Rec=0.7789 | Prec=0.9250 (51.2s)
+2026-10-23 16:44:46,565 [INFO] [E1] Seed=3 | 4a. BCBSMOTE (ratio=0.05) + RF | F1=0.8439 | AUPRC=0.7988 | Rec=0.7684 | Prec=0.9359 (69.9s)
+2026-10-23 16:45:52,127 [INFO] [E1] Seed=3 | 4b. BCBSMOTE (ratio=0.02) + RF | F1=0.8439 | AUPRC=0.7987 | Rec=0.7684 | Prec=0.9359 (65.5s)
+2026-10-23 16:46:09,148 [INFO] [E1] Seed=3 | 5. XGBoost (No Resampling, scale_pos_weight) | F1=0.8152 | AUPRC=0.7649 | Rec=0.7895 | Prec=0.8427 (17.0s)
+2026-10-23 16:46:11,429 [INFO] [E1] Seed=3 | 6. XGBoost + BCBSMOTE (ratio=0.05) | F1=0.8439 | AUPRC=0.8042 | Rec=0.7684 | Prec=0.9359 (2.2s)
+2026-10-23 16:46:12,472 [INFO] [E1] Seed=3 | 7. Logistic Regression (class_weight=balanced) | F1=0.1150 | AUPRC=0.6608 | Rec=0.8737 | Prec=0.0615 (1.0s)
+2026-10-23 16:46:15,781 [INFO] [E1] Seed=3 | 8. Balanced Random Forest | F1=0.2074 | AUPRC=0.7061 | Rec=0.8526 | Prec=0.1181 (3.2s)
+2026-10-23 16:47:22,540 [INFO] [E1] Seed=4 | 1. Plain Random Forest (No Resampling) | F1=0.8655 | AUPRC=0.8182 | Rec=0.7789 | Prec=0.9737 (66.4s)
+2026-10-23 16:48:30,220 [INFO] [E1] Seed=4 | 2. Tomek Links Only + RF | F1=0.8538 | AUPRC=0.8148 | Rec=0.7684 | Prec=0.9605 (67.6s)
+2026-10-23 16:49:29,942 [INFO] [E1] Seed=4 | 3a. Borderline-SMOTE (ratio=0.05) + RF | F1=0.8571 | AUPRC=0.8164 | Rec=0.7895 | Prec=0.9375 (59.6s)
+2026-10-23 16:50:24,785 [INFO] [E1] Seed=4 | 3b. Borderline-SMOTE (ratio=0.02) + RF | F1=0.8523 | AUPRC=0.8253 | Rec=0.7895 | Prec=0.9259 (54.8s)
+2026-10-23 16:51:39,599 [INFO] [E1] Seed=4 | 4a. BCBSMOTE (ratio=0.05) + RF | F1=0.8506 | AUPRC=0.8163 | Rec=0.7789 | Prec=0.9367 (74.7s)
+2026-10-23 16:52:49,735 [INFO] [E1] Seed=4 | 4b. BCBSMOTE (ratio=0.02) + RF | F1=0.8506 | AUPRC=0.8151 | Rec=0.7789 | Prec=0.9367 (70.1s)
+2026-10-23 16:53:05,240 [INFO] [E1] Seed=4 | 5. XGBoost (No Resampling, scale_pos_weight) | F1=0.8168 | AUPRC=0.8158 | Rec=0.8211 | Prec=0.8125 (15.4s)
+2026-10-23 16:53:17,612 [INFO] [E1] Seed=4 | 6. XGBoost + BCBSMOTE (ratio=0.05) | F1=0.8421 | AUPRC=0.8214 | Rec=0.7579 | Prec=0.9474 (12.3s)
+2026-10-23 16:53:19,531 [INFO] [E1] Seed=4 | 7. Logistic Regression (class_weight=balanced) | F1=0.1113 | AUPRC=0.7274 | Rec=0.8842 | Prec=0.0594 (1.8s)
+2026-10-23 16:53:23,371 [INFO] [E1] Seed=4 | 8. Balanced Random Forest | F1=0.2038 | AUPRC=0.7526 | Rec=0.8526 | Prec=0.1157 (3.8s)
+2026-10-23 16:53:23,456 [INFO] ======================================================================
+2026-10-23 16:53:23,456 [INFO] EXPERIMENT 2: LABEL NOISE STRESS TEST (Seeds 0-4, Symmetric & Fraud-Only)
+2026-10-23 16:53:23,457 [INFO] ======================================================================
+2026-10-23 16:54:30,604 [INFO] [E2] Seed=0 | Symmetric 0% | Plain RF (Control) | F1=0.8902 | AUPRC=0.8730 | Flipped: Gen->Fraud=0, Fraud->Gen=0
+2026-10-23 16:55:31,606 [INFO] [E2] Seed=0 | Symmetric 0% | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8792 | Flipped: Gen->Fraud=0, Fraud->Gen=0
+2026-10-23 16:57:50,605 [INFO] [E2] Seed=0 | Symmetric 1% | Plain RF (Control) | F1=0.7919 | AUPRC=0.8364 | Flipped: Gen->Fraud=2281, Fraud->Gen=1
+2026-10-23 16:59:31,453 [INFO] [E2] Seed=0 | Symmetric 1% | BCBSMOTE + RF | F1=0.7476 | AUPRC=0.8008 | Flipped: Gen->Fraud=2281, Fraud->Gen=1
+2026-10-23 17:02:39,702 [INFO] [E2] Seed=0 | Symmetric 5% | Plain RF (Control) | F1=0.4877 | AUPRC=0.7783 | Flipped: Gen->Fraud=11269, Fraud->Gen=17
+2026-10-23 17:05:30,276 [WARNING] [AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 0, Symmetric 5%)
+2026-10-23 17:05:31,076 [INFO] [E2] Seed=0 | Symmetric 5% | BCBSMOTE + RF | F1=0.4633 | AUPRC=0.7900 | Flipped: Gen2026-10-23 17:07:33,739 [INFO]2026-10-23 17:08:14,136 [INFO] [E2] Seed=0 | Symmetric 10% | Plain RF (Control) | F1=0.272026-10-23 17:08:25,207 [INFO] [E2] Seed=1 | Fraud-Only 10% | 2026-10-23 17:11:02,690 [WARNING] [AUDIT WARNING] Zero synthetic samples created in E2 | BCBSMOTE + RF (Seed 0, Symmetric 10%)
+2026-10-23 17:11:03,645 [INFO] [E2] Seed=0 | Symmetric 10% | BCBSMOTE + RF | F1=0.2251 | AUPRC=0.7009 | Flipped: Gen->Fraud=22818, Fraud->Gen=31
+2026-10-23 17:12:05,936 [INFO] [E2] Seed=0 | Fraud-Only 10% | Plain RF (Control) | F1=0.8706 | AUPRC=0.8717 | Flipped: Gen->Fraud=0, Fraud->Ge2026-12026-10-23 17:13:08,944 [INFO] [E2] Seed=0 | Fraud-Only 10% | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8748 | Flipped: Gen2026-10-23 17:13:13,247 [I2026-10-23 17:14:03,808 [INFO] [E2] Seed=0 | Fraud-Only 20% | Plain RF (Control) | F1=0.84152026-10-23 17:14:11,127 [INFO] [E2] Seed=2 | Symmetric 02026-10-23 17:15:05,287 [INFO] [E2] Seed=0 | Fraud-Only 20% | B2026-10-23 17:15:17,521 [INFO] [E2] Seed=2 | Symmetric 0% | BCBSMOTE + RF | F1=02026-10-23 17:15:59,048 [INFO] [E22026-10-23 17:17:12,473 [INFO] [E2] Seed=2 | Symmetric 1% | Plain RF (Control) | F1=0.7385 | AUPRC=0.7502 | Flipped=2352
+2026-10-23 17:18:56,350 [INFO] [E2] Seed=2 | Symmetric 1% | BCBSMOTE + RF | F1=0.7081 | AUPRC=0.7422 | Flipped=2352
+2026-10-23 17:21:22,599 [INFO] [E2] Seed=2 | Symmetric 5% | Plain RF (Control) | F1=0.4591 | AUPRC=0.7394 | Flipped=11505
+2026-10-23 17:23:53,111 [INFO] [E2] Seed=2 | Symmetric 5% | BCBSMOTE + RF | F1=0.4146 | AUPRC=0.7251 | Flipped=11505
+2026-10-23 17:26:15,190 [INFO] [E2] Seed=2 | Symmetric 10% | Plain RF (Control) | F1=0.2659 | AUPRC=0.5949 | Flipped=22993
+2026-10-23 17:28:59,194 [INFO] [E2] Seed=2 | Symmetric 10% | BCBSMOTE + RF | F1=0.2108 | AUPRC=0.5916 | Flipped=22993
+2026-10-23 17:30:00,847 [INFO] [E2] Seed=2 | Fraud-Only 10% | Plain RF (Control) | F1=0.8214 | AUPRC=0.8118 | Flipped=38
+2026-10-23 17:31:05,488 [INFO] [E2] Seed=2 | Fraud-Only 10% | BCBSMOTE + RF | F1=0.8284 | AUPRC=0.8063 | Flipped=38
+2026-10-23 17:31:57,037 [INFO] [E2] Seed=2 | Fraud-Only 20% | Plain RF (Control) | F1=0.7927 | AUPRC=0.7953 | Flipped=76
+2026-10-23 17:33:02,952 [INFO] [E2] Seed=2 | Fraud-Only 20% | BCBSMOTE + RF | F1=0.8214 | AUPRC=0.8032 | Flipped=76
+2026-10-23 17:33:58,522 [INFO] [E2] Seed=2 | Fraud-Only 30% | Plain RF (Control) | F1=0.7468 | AUPRC=0.7739 | Flipped=113
+2026-10-23 17:35:01,884 [INFO] [E2] Seed=2 | Fraud-Only 30% | BCBSMOTE + RF | F1=0.7857 | AUPRC=0.7921 | Flipped=113
+2026-10-23 17:35:58,938 [INFO] [E2] Seed=3 | Symmetric 0% | Plain RF (Control) | F1=0.8471 | AUPRC=0.8023 | Flipped=0
+2026-10-23 17:37:00,354 [INFO] [E2] Seed=3 | Symmetric 0% | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.7987 | Flipped=0
+2026-10-23 17:39:04,411 [INFO] [E2] Seed=3 | Symmetric 1% | Plain RF (Control) | F1=0.7619 | AUPRC=0.7687 | Flipped=2203
+2026-10-23 17:40:56,777 [INFO] [E2] Seed=3 | Symmetric 1% | BCBSMOTE + RF | F1=0.7300 | AUPRC=0.7396 | Flipped=2203
+2026-10-23 17:43:30,836 [INFO] [E2] Seed=3 | Symmetric 5% | Plain RF (Control) | F1=0.4713 | AUPRC=0.7219 | Flipped=11181
+2026-10-23 17:46:22,737 [INFO] [E2] Seed=3 | Symmetric 5% | BCBSMOTE + RF | F1=0.4205 | AUPRC=0.7069 | Flipped=11181
+2026-10-23 17:48:45,539 [INFO] [E2] Seed=3 | Symmetric 10% | Plain RF (Control) | F1=0.2530 | AUPRC=0.6278 | Flipped=22660
+2026-10-23 17:51:18,601 [INFO] [E2] Seed=3 | Symmetric 10% | BCBSMOTE + RF | F1=0.2053 | AUPRC=0.6176 | Flipped=22660
+2026-10-23 17:52:19,812 [INFO] [E2] Seed=3 | Fraud-Only 10% | Plain RF (Control) | F1=0.8121 | AUPRC=0.8069 | Flipped=38
+2026-10-23 17:53:12,420 [INFO] [E2] Seed=3 | Fraud-Only 10% | BCBSMOTE + RF | F1=0.8214 | AUPRC=0.7986 | Flipped=38
+2026-10-23 17:54:11,317 [INFO] [E2] Seed=3 | Fraud-Only 20% | Plain RF (Control) | F1=0.7750 | AUPRC=0.8009 | Flipped=76
+2026-10-23 17:55:12,712 [INFO] [E2] Seed=3 | Fraud-Only 20% | BCBSMOTE + RF | F1=0.8075 | AUPRC=0.7996 | Flipped=76
+2026-10-23 17:56:06,052 [INFO] [E2] Seed=3 | Fraud-Only 30% | Plain RF (Control) | F1=0.6939 | AUPRC=0.7847 | Flipped=113
+2026-10-23 17:57:05,664 [INFO] [E2] Seed=3 | Fraud-Only 30% | BCBSMOTE + RF | F1=0.7799 | AUPRC=0.7966 | Flipped=113
+2026-10-23 17:58:08,190 [INFO] [E2] Seed=4 | Symmetric 0% | Plain RF (Control) | F1=0.8655 | AUPRC=0.8182 | Flipped=0
+2026-10-23 17:59:16,576 [INFO] [E2] Seed=4 | Symmetric 0% | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8151 | Flipped=0
+2026-10-23 18:01:12,980 [INFO] [E2] Seed=4 | Symmetric 1% | Plain RF (Control) | F1=0.7835 | AUPRC=0.7942 | Flipped=2320
+2026-10-23 18:02:53,624 [INFO] [E2] Seed=4 | Symmetric 1% | BCBSMOTE + RF | F1=0.7238 | AUPRC=0.7685 | Flipped=2320
+2026-10-23 18:05:34,656 [INFO] [E2] Seed=4 | Symmetric 5% | Plain RF (Control) | F1=0.4968 | AUPRC=0.7176 | Flipped=11457
+2026-10-23 18:08:08,373 [INFO] [E2] Seed=4 | Symmetric 5% | BCBSMOTE + RF | F1=0.4451 | AUPRC=0.7209 | Flipped=11457
+2026-10-23 18:10:25,673 [INFO] [E2] Seed=4 | Symmetric 10% | Plain RF (Control) | F1=0.2759 | AUPRC=0.5784 | Flipped=23031
+2026-10-23 18:12:51,579 [INFO] [E2] Seed=4 | Symmetric 10% | BCBSMOTE + RF | F1=0.2209 | AUPRC=0.6191 | Flipped=23031
+2026-10-23 18:13:50,743 [INFO] [E2] Seed=4 | Fraud-Only 10% | Plain RF (Control) | F1=0.8452 | AUPRC=0.8102 | Flipped=38
+2026-10-23 18:15:04,541 [INFO] [E2] Seed=4 | Fraud-Only 10% | BCBSMOTE + RF | F1=0.8736 | AUPRC=0.8032 | Flipped=38
+2026-10-23 18:15:58,109 [INFO] [E2] Seed=4 | Fraud-Only 20% | Plain RF (Control) | F1=0.7564 | AUPRC=0.8031 | Flipped=76
+2026-10-23 18:17:11,464 [INFO] [E2] Seed=4 | Fraud-Only 20% | BCBSMOTE + RF | F1=0.8242 | AUPRC=0.8122 | Flipped=76
+2026-10-23 18:18:04,457 [INFO] [E2] Seed=4 | Fraud-Only 30% | Plain RF (Control) | F1=0.6621 | AUPRC=0.8001 | Flipped=113
+2026-10-23 18:19:14,416 [INFO] [E2] Seed=4 | Fraud-Only 30% | BCBSMOTE + RF | F1=0.8025 | AUPRC=0.7962 | Flipped=113
+2026-10-23 18:19:15,444 [INFO] ======================================================================
+2026-10-23 18:19:15,444 [INFO] EXPERIMENT 3: FEATURE REMOVAL (Top 3 Features from Training Set)
+2026-10-23 18:19:15,444 [INFO] ======================================================================
+2026-10-23 18:20:16,505 [INFO] [E3] Seed 0 Top 3 features by RF importance: ['V17', 'V12', 'V14']
+2026-10-23 18:21:16,358 [INFO] [E3] Seed=0 | All Features | Plain RF (Control) | F1=0.8902 | AUPRC=0.8730
+2026-10-23 18:22:19,548 [INFO] [E3] Seed=0 | All Features | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8804
+2026-10-23 18:23:24,616 [INFO] [E3] Seed=0 | Top 3 Removed | Plain RF (Control) | F1=0.8148 | AUPRC=0.8587
+2026-10-23 18:24:31,713 [INFO] [E3] Seed=0 | Top 3 Removed | BCBSMOTE + RF | F1=0.8364 | AUPRC=0.8586
+2026-10-23 18:25:30,000 [INFO] [E3] Seed 1 Top 3 features by RF importance: ['V17', 'V14', 'V12']
+2026-10-23 18:26:30,085 [INFO] [E3] Seed=1 | All Features | Plain RF (Control) | F1=0.8193 | AUPRC=0.7884
+2026-10-23 18:27:31,028 [INFO] [E3] Seed=1 | All Features | BCBSMOTE + RF | F1=0.8333 | AUPRC=0.7828
+2026-10-23 18:28:36,656 [INFO] [E3] Seed=1 | Top 3 Removed | Plain RF (Control) | F1=0.8025 | AUPRC=0.7770
+2026-10-23 18:29:42,066 [INFO] [E3] Seed=1 | Top 3 Removed | BCBSMOTE + RF | F1=0.8025 | AUPRC=0.7786
+2026-10-23 18:30:43,327 [INFO] [E3] Seed 2 Top 3 features by RF importance: ['V17', 'V12', 'V14']
+2026-10-23 18:31:34,154 [INFO] [E3] Seed=2 | All Features | Plain RF (Control) | F1=0.8372 | AUPRC=0.8054
+2026-10-23 18:32:39,751 [INFO] [E3] Seed=2 | All Features | BCBSMOTE + RF | F1=0.8235 | AUPRC=0.7924
+2026-10-23 18:33:41,871 [INFO] [E3] Seed=2 | Top 3 Removed | Plain RF (Control) | F1=0.8235 | AUPRC=0.7784
+2026-10-23 18:34:44,781 [INFO] [E3] Seed=2 | Top 3 Removed | BCBSMOTE + RF | F1=0.8095 | AUPRC=0.7482
+2026-10-23 18:35:42,813 [INFO] [E3] Seed 3 Top 3 features by RF importance: ['V17', 'V14', 'V12']
+2026-10-23 18:36:29,521 [INFO] [E3] Seed=3 | All Features | Plain RF (Control) | F1=0.8471 | AUPRC=0.8023
+2026-10-23 18:37:32,084 [INFO] [E3] Seed=3 | All Features | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.7987
+2026-10-23 18:38:34,814 [INFO] [E3] Seed=3 | Top 3 Removed | Plain RF (Control) | F1=0.7927 | AUPRC=0.7867
+2026-10-23 18:39:45,325 [INFO] [E3] Seed=3 | Top 3 Removed | BCBSMOTE + RF | F1=0.8304 | AUPRC=0.7820
+2026-10-23 18:40:46,168 [INFO] [E3] Seed 4 Top 3 features by RF importance: ['V17', 'V14', 'V12']
+2026-10-23 18:41:46,206 [INFO] [E3] Seed=4 | All Features | Plain RF (Control) | F1=0.8655 | AUPRC=0.8182
+2026-10-23 18:42:57,356 [INFO] [E3] Seed=4 | All Features | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8151
+2026-10-23 18:43:57,654 [INFO] [E3] Seed=4 | Top 3 Removed | Plain RF (Control) | F1=0.8049 | AUPRC=0.7907
+2026-10-23 18:45:07,917 [INFO] [E3] Seed=4 | Top 3 Removed | BCBSMOTE + RF | F1=0.8121 | AUPRC=0.7923
+2026-10-23 18:45:07,936 [INFO] [E3] Top 3 features identified per seed: {0: ['V17', 'V12', 'V14'], 1: ['V17', 'V14', 'V12'], 2: ['V17', 'V12', 'V14'], 3: ['V17', 'V14', 'V12'], 4: ['V17', 'V14', 'V12']}
+2026-10-23 18:45:07,961 [INFO] ======================================================================
+2026-10-23 18:45:07,961 [INFO] EXPERIMENT 4: HIGHER DIMENSIONS (0, 20, 100 Noise Features)
+2026-10-23 18:45:07,961 [INFO] ======================================================================
+2026-10-23 18:46:07,691 [INFO] [E4] Seed=0 | +0 noise dims | Plain RF | F1=0.8902 | AUPRC=0.8730 | MCC=0.8943 (59.4s)
+2026-10-23 18:46:58,583 [INFO] [E4] Seed=0 | +0 noise dims | Borderline-SMOTE + RF | F1=0.8939 | AUPRC=0.8887 | MCC=0.8954 (50.8s)
+2026-10-23 18:48:02,826 [INFO] [E4] Seed=0 | +0 noise dims | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8804 | MCC=0.8943 (64.2s)
+2026-10-23 18:49:35,076 [INFO] [E4] Seed=0 | +20 noise dims | Plain RF | F1=0.8889 | AUPRC=0.8639 | MCC=0.8943 (91.9s)
+2026-10-23 18:50:49,806 [INFO] [E4] Seed=0 | +20 noise dims | Borderline-SMOTE + RF | F1=0.8827 | AUPRC=0.8828 | MCC=0.8842 (74.7s)
+2026-10-23 18:52:30,446 [INFO] [E4] Seed=0 | +20 noise dims | BCBSMOTE + RF | F1=0.8814 | AUPRC=0.8804 | MCC=0.8836 (100.6s)
+2026-10-23 18:55:18,500 [INFO] [E4] Seed=0 | +100 noise dims | Plain RF | F1=0.8434 | AUPRC=0.8558 | MCC=0.8521 (166.4s)
+2026-10-23 18:57:27,626 [INFO] [E4] Seed=0 | +100 noise dims | Borderline-SMOTE + RF | F1=0.8764 | AUPRC=0.8650 | MCC=0.8782 (129.0s)
+2026-10-23 19:00:43,836 [INFO] [E4] Seed=0 | +100 noise dims | BCBSMOTE + RF | F1=0.8686 | AUPRC=0.8625 | MCC=0.8716 (196.1s)
+2026-10-23 19:01:40,400 [INFO] [E4] Seed=1 | +0 noise dims | Plain RF | F1=0.8193 | AUPRC=0.7884 | MCC=0.8277 (56.2s)
+2026-10-23 19:02:32,913 [INFO] [E4] Seed=1 | +0 noise dims | Borderline-SMOTE + RF | F1=0.8409 | AUPRC=0.7971 | MCC=0.8433 (52.4s)
+2026-10-23 19:03:35,497 [INFO] [E4] Seed=1 | +0 noise dims | BCBSMOTE + RF | F1=0.8333 | AUPRC=0.7828 | MCC=0.8403 (62.5s)
+2026-10-23 19:05:04,196 [INFO] [E4] Seed=1 | +20 noise dims | Plain RF | F1=0.8171 | AUPRC=0.7812 | MCC=0.8273 (88.2s)
+2026-10-23 19:06:22,804 [INFO] [E4] Seed=1 | +20 noise dims | Borderline-SMOTE + RF | F1=0.8295 | AUPRC=0.7839 | MCC=0.8319 (78.5s)
+2026-10-23 19:08:02,441 [INFO] [E4] Seed=1 | +20 noise dims | BCBSMOTE + RF | F1=0.8229 | AUPRC=0.7894 | MCC=0.8256 (99.6s)
+2026-10-23 19:10:47,984 [INFO] [E4] Seed=1 | +100 noise dims | Plain RF | F1=0.7831 | AUPRC=0.7614 | MCC=0.7912 (163.9s)
+2026-10-23 19:13:10,761 [INFO] [E4] Seed=1 | +100 noise dims | Borderline-SMOTE + RF | F1=0.7907 | AUPRC=0.7614 | MCC=0.7948 (142.7s)
+2026-10-23 19:16:19,272 [INFO] [E4] Seed=1 | +100 noise dims | BCBSMOTE + RF | F1=0.7861 | AUPRC=0.7484 | MCC=0.7896 (188.4s)
+2026-10-23 19:17:15,230 [INFO] [E4] Seed=2 | +0 noise dims | Plain RF | F1=0.8372 | AUPRC=0.8054 | MCC=0.8416 (55.6s)
+2026-10-23 19:18:09,495 [INFO] [E4] Seed=2 | +0 noise dims | Borderline-SMOTE + RF | F1=0.8315 | AUPRC=0.8055 | MCC=0.8331 (54.2s)
+2026-10-23 19:19:13,675 [INFO] [E4] Seed=2 | +0 noise dims | BCBSMOTE + RF | F1=0.8235 | AUPRC=0.7924 | MCC=0.8290 (64.1s)
+2026-10-23 19:20:45,903 [INFO] [E4] Seed=2 | +20 noise dims | Plain RF | F1=0.8140 | AUPRC=0.7903 | MCC=0.8182 (91.8s)
+2026-10-23 19:22:13,992 [INFO] [E4] Seed=2 | +20 noise dims | Borderline-SMOTE + RF | F1=0.8249 | AUPRC=0.8022 | MCC=0.8268 (88.0s)
+2026-10-23 19:23:56,669 [INFO] [E4] Seed=2 | +20 noise dims | BCBSMOTE + RF | F1=0.8182 | AUPRC=0.8044 | MCC=0.8205 (102.6s)
+2026-10-23 19:26:47,445 [INFO] [E4] Seed=2 | +100 noise dims | Plain RF | F1=0.8070 | AUPRC=0.7890 | MCC=0.8118 (169.3s)
+2026-10-23 19:28:54,309 [INFO] [E4] Seed=2 | +100 noise dims | Borderline-SMOTE + RF | F1=0.8182 | AUPRC=0.7932 | MCC=0.8205 (126.8s)
+2026-10-23 19:32:00,391 [INFO] [E4] Seed=2 | +100 noise dims | BCBSMOTE + RF | F1=0.8156 | AUPRC=0.8046 | MCC=0.8169 (186.0s)
+2026-10-23 19:32:58,207 [INFO] [E4] Seed=3 | +0 noise dims | Plain RF | F1=0.8471 | AUPRC=0.8023 | MCC=0.8528 (57.4s)
+2026-10-23 19:33:43,196 [INFO] [E4] Seed=3 | +0 noise dims | Borderline-SMOTE + RF | F1=0.8457 | AUPRC=0.8194 | MCC=0.8486 (44.9s)
+2026-10-23 19:34:49,269 [INFO] [E4] Seed=3 | +0 noise dims | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.7987 | MCC=0.8478 (66.0s)
+2026-10-23 19:36:12,066 [INFO] [E4] Seed=3 | +20 noise dims | Plain RF | F1=0.8372 | AUPRC=0.7965 | MCC=0.8416 (82.4s)
+2026-10-23 19:37:31,464 [INFO] [E4] Seed=3 | +20 noise dims | Borderline-SMOTE + RF | F1=0.8457 | AUPRC=0.8019 | MCC=0.8486 (79.3s)
+2026-10-23 19:39:05,422 [INFO] [E4] Seed=3 | +20 noise dims | BCBSMOTE + RF | F1=0.8409 | AUPRC=0.7820 | MCC=0.8433 (93.9s)
+2026-10-23 19:41:45,058 [INFO] [E4] Seed=3 | +100 noise dims | Plain RF | F1=0.8070 | AUPRC=0.7662 | MCC=0.8118 (158.2s)
+2026-10-23 19:43:58,815 [INFO] [E4] Seed=3 | +100 noise dims | Borderline-SMOTE + RF | F1=0.8222 | AUPRC=0.7566 | MCC=0.8232 (133.7s)
+2026-10-23 19:47:01,314 [INFO] [E4] Seed=3 | +100 noise dims | BCBSMOTE + RF | F1=0.8295 | AUPRC=0.7533 | MCC=0.8319 (182.4s)
+2026-10-23 19:48:02,978 [INFO] [E4] Seed=4 | +0 noise dims | Plain RF | F1=0.8655 | AUPRC=0.8182 | MCC=0.8707 (61.3s)
+2026-10-23 19:48:48,523 [INFO] [E4] Seed=4 | +0 noise dims | Borderline-SMOTE + RF | F1=0.8523 | AUPRC=0.8253 | MCC=0.8548 (45.5s)
+2026-10-23 19:50:01,236 [INFO] [E4] Seed=4 | +0 noise dims | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8151 | MCC=0.8540 (72.7s)
+2026-10-23 19:51:27,058 [INFO] [E4] Seed=4 | +20 noise dims | Plain RF | F1=0.8439 | AUPRC=0.8118 | MCC=0.8478 (85.4s)
+2026-10-23 19:52:51,463 [INFO] [E4] Seed=4 | +20 noise dims | Borderline-SMOTE + RF | F1=0.8523 | AUPRC=0.8158 | MCC=0.8548 (84.3s)
+2026-10-23 19:54:36,643 [INFO] [E4] Seed=4 | +20 noise dims | BCBSMOTE + RF | F1=0.8636 | AUPRC=0.8226 | MCC=0.8662 (105.1s)
+2026-10-23 19:57:35,576 [INFO] [E4] Seed=4 | +100 noise dims | Plain RF | F1=0.8439 | AUPRC=0.8046 | MCC=0.8478 (177.5s)
+2026-10-23 20:00:02,740 [INFO] [E4] Seed=4 | +100 noise dims | Borderline-SMOTE + RF | F1=0.8287 | AUPRC=0.8062 | MCC=0.8295 (147.1s)
+2026-10-23 20:03:42,579 [INFO] [E4] Seed=4 | +100 noise dims | BCBSMOTE + RF | F1=0.8427 | AUPRC=0.8196 | MCC=0.8444 (219.8s)
+2026-10-23 20:03:43,575 [INFO] ======================================================================
+2026-10-23 20:03:43,575 [INFO] EXPERIMENT 5: COST THRESHOLD (5-Fold Stratified OOF on Training Set)
+2026-10-23 20:03:43,575 [INFO] ======================================================================
+2026-10-23 20:03:43,822 [INFO] [E5] Computing 5-Fold OOF training probabilities for Plain RF (Seed 0)...
+2026-10-23 20:07:40,789 [INFO] [E5] Seed 0 Plain RF Chosen OOF Threshold: 0.0595 (OOF Cost: $31,980)
+2026-10-23 20:08:46,112 [INFO] [E5] Seed 0 | Plain RF | Default Cost: $9,010 | Chosen Cost: $7,060 (Thresh=0.0595) | Saving: $1,950 | Optimistic: $6,690 (Thresh=0.1288)
+2026-10-23 20:08:46,112 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 0)...
+2026-10-23 20:16:03,098 [INFO] [E5] Seed 0 BCBSMOTE + RF Chosen OOF Threshold: 0.0694 (OOF Cost: $31,480)
+2026-10-23 20:17:19,216 [INFO] [E5] Seed 0 | BCBSMOTE + RF | Default Cost: $9,010 | Chosen Cost: $6,530 (Thresh=0.0694) | Saving: $2,480 | Optimistic: $5,710 (Thresh=0.0397)
+2026-10-23 20:17:19,500 [INFO] [E5] Computing 5-Fold OOF training probabilities for Plain RF (Seed 1)...
+2026-10-23 20:22:15,989 [INFO] [E5] Seed 1 Plain RF Chosen OOF Threshold: 0.0892 (OOF Cost: $27,790)
+2026-10-23 20:23:32,303 [INFO] [E5] Seed 1 | Plain RF | Default Cost: $13,530 | Chosen Cost: $10,290 (Thresh=0.0892) | Saving: $3,240 | Optimistic: $10,290 (Thresh=0.0892)
+2026-10-23 20:23:32,303 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 1)...
+2026-10-23 20:28:21,100 [INFO] [E5] Seed 1 BCBSMOTE + RF Chosen OOF Threshold: 0.0892 (OOF Cost: $27,170)
+2026-10-23 20:29:22,064 [INFO] [E5] Seed 1 | BCBSMOTE + RF | Default Cost: $12,530 | Chosen Cost: $10,830 (Thresh=0.0892) | Saving: $1,700 | Optimistic: $10,350 (Thresh=0.0793)
+2026-10-23 20:29:22,427 [INFO] [E5] Computing 5-Fold OOF training probabilities for Plain RF (Seed 2)...
+2026-10-23 20:33:10,617 [INFO] [E5] Seed 2 Plain RF Chosen OOF Threshold: 0.0991 (OOF Cost: $29,680)
+2026-10-23 20:34:12,494 [INFO] [E5] Seed 2 | Plain RF | Default Cost: $11,550 | Chosen Cost: $8,890 (Thresh=0.0991) | Saving: $2,660 | Optimistic: $8,680 (Thresh=0.0397)
+2026-10-23 20:34:12,494 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 2)...
+2026-10-23 20:38:30,055 [INFO] [E5] Seed 2 BCBSMOTE + RF Chosen OOF Threshold: 0.0595 (OOF Cost: $28,810)
+2026-10-23 20:39:40,507 [INFO] [E5] Seed 2 | BCBSMOTE + RF | Default Cost: $12,550 | Chosen Cost: $8,670 (Thresh=0.0595) | Saving: $3,880 | Optimistic: $8,460 (Thresh=0.0793)
+2026-10-23 20:39:40,796 [INFO] [E5] Computing 5-Fold OOF training probabilities for Plain RF (Seed 3)...
+2026-10-23 20:43:28,007 [INFO] [E5] Seed 3 Plain RF Chosen OOF Threshold: 0.0496 (OOF Cost: $27,960)
+2026-10-23 20:44:23,085 [INFO] [E5] Seed 3 | Plain RF | Default Cost: $11,530 | Chosen Cost: $10,040 (Thresh=0.0496) | Saving: $1,490 | Optimistic: $9,680 (Thresh=0.1189)
+2026-10-23 20:44:23,085 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 3)...
+2026-10-23 20:48:30,046 [INFO] [E5] Seed 3 BCBSMOTE + RF Chosen OOF Threshold: 0.0991 (OOF Cost: $26,700)
+2026-10-23 20:49:34,586 [INFO] [E5] Seed 3 | BCBSMOTE + RF | Default Cost: $11,050 | Chosen Cost: $10,240 (Thresh=0.0991) | Saving: $810 | Optimistic: $9,380 (Thresh=0.0298)
+2026-10-23 20:49:34,895 [INFO] [E5] Computing 5-Fold OOF training probabilities for Plain RF (Seed 4)...
+2026-10-23 20:53:37,053 [INFO] [E5] Seed 4 Plain RF Chosen OOF Threshold: 0.0397 (OOF Cost: $29,670)
+2026-10-23 20:54:40,849 [INFO] [E5] Seed 4 | Plain RF | Default Cost: $10,520 | Chosen Cost: $8,090 (Thresh=0.0397) | Saving: $2,430 | Optimistic: $7,870 (Thresh=0.0793)
+2026-10-23 20:54:40,849 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 4)...
+2026-10-23 20:59:20,273 [INFO] [E5] Seed 4 BCBSMOTE + RF Chosen OOF Threshold: 0.0892 (OOF Cost: $29,880)
+2026-10-23 21:00:23,008 [INFO] [E5] Seed 4 | BCBSMOTE + RF | Default Cost: $10,550 | Chosen Cost: $8,340 (Thresh=0.0892) | Saving: $2,210 | Optimistic: $7,990 (Thresh=0.0694)
+2026-10-23 21:00:23,028 [INFO] ======================================================================
+2026-10-23 21:00:23,028 [INFO] EXPERIMENT 6: SCALING EFFECT (With vs Without Scaling Time and Amount)
+2026-10-23 21:00:23,028 [INFO] ======================================================================
+2026-10-23 21:01:17,840 [INFO] [E6] Seed=0 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8939 | AUPRC=0.8887
+2026-10-23 21:02:25,379 [INFO] [E6] Seed=0 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8804
+2026-10-23 21:03:25,408 [INFO] [E6] Seed=0 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8977 | AUPRC=0.8727
+2026-10-23 21:04:30,016 [INFO] [E6] Seed=0 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8837 | AUPRC=0.8735
+2026-10-23 21:05:23,730 [INFO] [E6] Seed=1 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8409 | AUPRC=0.7971
+2026-10-23 21:06:28,770 [INFO] [E6] Seed=1 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8333 | AUPRC=0.7828
+2026-10-23 21:07:35,479 [INFO] [E6] Seed=1 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8488 | AUPRC=0.7934
+2026-10-23 21:08:37,680 [INFO] [E6] Seed=1 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8193 | AUPRC=0.7808
+2026-10-23 21:09:37,234 [INFO] [E6] Seed=2 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8315 | AUPRC=0.8055
+2026-10-23 21:10:42,399 [INFO] [E6] Seed=2 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8235 | AUPRC=0.7924
+2026-10-23 21:11:46,034 [INFO] [E6] Seed=2 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8343 | AUPRC=0.8020
+2026-10-23 21:12:49,592 [INFO] [E6] Seed=2 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8324 | AUPRC=0.7850
+2026-10-23 21:13:41,321 [INFO] [E6] Seed=3 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8457 | AUPRC=0.8194
+2026-10-23 21:14:46,951 [INFO] [E6] Seed=3 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.7987
+2026-10-23 21:15:53,323 [INFO] [E6] Seed=3 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8372 | AUPRC=0.8071
+2026-10-23 21:16:58,519 [INFO] [E6] Seed=3 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8391 | AUPRC=0.7938
+2026-10-23 21:17:56,817 [INFO] [E6] Seed=4 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8523 | AUPRC=0.8253
+2026-10-23 21:19:07,450 [INFO] [E6] Seed=4 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8151
+2026-10-23 21:20:10,351 [INFO] [E6] Seed=4 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8686 | AUPRC=0.8236
+2026-10-23 21:21:15,204 [INFO] [E6] Seed=4 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8110
+2026-10-23 21:21:15,234 [INFO] ======================================================================
+2026-10-23 21:21:15,234 [INFO] EXPERIMENT 7: PAYSIM BENCHMARK (Stratified 10% Sample, Seeds 0-4)
+2026-10-23 21:21:15,234 [INFO] ======================================================================
+2026-10-23 21:21:32,324 [INFO] [E7] Loaded PaySim in 17.08s (6,362,620 rows, 8,213 frauds)
+2026-10-23 21:21:37,738 [INFO] [E7] 10% Sample: 636,262 rows (821 frauds)
+2026-10-23 21:22:02,320 [INFO] [E7] Seed=0 | Plain RF | F1=0.8678 | AUPRC=0.8679 | Rec=0.7805 | Prec=0.9771 (23.9s)
+2026-10-23 21:22:21,017 [INFO] [E7] Seed=0 | Borderline-SMOTE | F1=0.8123 | AUPRC=0.8704 | Rec=0.8049 | Prec=0.8199 (18.5s)
+2026-10-23 21:22:50,760 [INFO] [E7] Seed=0 | BCBSMOTE-approx | F1=0.8354 | AUPRC=0.8640 | Rec=0.8049 | Prec=0.8684 (29.6s)
+2026-10-23 21:23:11,007 [INFO] [E7] Seed=1 | Plain RF | F1=0.8729 | AUPRC=0.8862 | Rec=0.7744 | Prec=1.0000 (19.8s)
+2026-10-23 21:23:34,129 [INFO] [E7] Seed=1 | Borderline-SMOTE | F1=0.8635 | AUPRC=0.8918 | Rec=0.8293 | Prec=0.9007 (23.0s)
+2026-10-23 21:23:59,961 [INFO] [E7] Seed=1 | BCBSMOTE-approx | F1=0.8474 | AUPRC=0.8870 | Rec=0.8293 | Prec=0.8662 (25.7s)
+2026-10-23 21:24:23,704 [INFO] [E7] Seed=2 | Plain RF | F1=0.8198 | AUPRC=0.7909 | Rec=0.7073 | Prec=0.9748 (23.1s)
+2026-10-23 21:24:46,257 [INFO] [E7] Seed=2 | Borderline-SMOTE | F1=0.8094 | AUPRC=0.8104 | Rec=0.7378 | Prec=0.8963 (22.4s)
+2026-10-23 21:25:14,111 [INFO] [E7] Seed=2 | BCBSMOTE-approx | F1=0.8041 | AUPRC=0.8050 | Rec=0.7256 | Prec=0.9015 (27.7s)
+2026-10-23 21:25:38,486 [INFO] [E7] Seed=3 | Plain RF | F1=0.8339 | AUPRC=0.8359 | Rec=0.7195 | Prec=0.9916 (23.8s)
+2026-10-23 21:25:58,412 [INFO] [E7] Seed=3 | Borderline-SMOTE | F1=02026-10-23 21:28:09,684 [INFO] [E5] Seed 4 | Plain RF | Cost(0.5): $10,520 | Cost(chosen=0.0397): $8,090 | Saving: $2,430 | Optimistic: $7,870 (t=0.0793)
+2026-10-23 21:28:09,684 [INFO] [E5] Computing 5-Fold OOF training probabilities for BCBSMOTE + RF (Seed 4)...
+2026-10-23 21:31:12,182 [INFO] [E5] Seed 4 | BCBSMOTE + RF | Cost(0.5): $10,550 | Cost(chosen=0.0892): $8,350 | Saving: $2,200 | Optimistic: $8,000 (t=0.0694)
+2026-10-23 21:31:12,198 [INFO] ======================================================================
+2026-10-23 21:31:12,198 [INFO] EXPERIMENT 6: SCALING EFFECT (Scaled vs Unscaled Time and Amount)
+2026-10-23 21:31:12,198 [INFO] ======================================================================
+2026-10-23 21:31:45,043 [INFO] [E6] Seed=0 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8989 | AUPRC=0.8909
+2026-10-23 21:32:20,998 [INFO] [E6] Seed=0 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8902 | AUPRC=0.8792
+2026-10-23 21:32:56,178 [INFO] [E6] Seed=0 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8927 | AUPRC=0.8770
+2026-10-23 21:33:28,910 [INFO] [E6] Seed=0 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8837 | AUPRC=0.8737
+2026-10-23 21:33:56,801 [INFO] [E6] Seed=1 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8391 | AUPRC=0.7976
+2026-10-23 21:34:31,389 [INFO] [E6] Seed=1 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8333 | AUPRC=0.7823
+2026-10-23 21:35:05,397 [INFO] [E6] Seed=1 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8372 | AUPRC=0.7854
+2026-10-23 21:35:40,392 [INFO] [E6] Seed=1 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8193 | AUPRC=0.7812
+2026-10-23 21:36:10,217 [INFO] [E6] Seed=2 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8249 | AUPRC=0.8104
+2026-10-23 21:36:46,263 [INFO] [E6] Seed=2 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8235 | AUPRC=0.7915
+2026-10-23 21:37:22,892 [INFO] [E6] Seed=2 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8362 | AUPRC=0.8032
+2026-10-23 21:37:57,900 [INFO] [E6] Seed=2 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8324 | AUPRC=0.7853
+2026-10-23 21:38:27,093 [INFO] [E6] Seed=3 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8457 | AUPRC=0.8064
+2026-10-23 21:39:03,168 [INFO] [E6] Seed=3 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.7988
+2026-10-23 21:39:39,156 [INFO] [E6] Seed=3 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8488 | AUPRC=0.8081
+2026-10-23 21:40:15,936 [INFO] [E6] Seed=3 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8391 | AUPRC=0.7969
+2026-10-23 21:40:49,827 [INFO] [E6] Seed=4 | Scaled Time & Amount | Borderline-SMOTE + RF | F1=0.8571 | AUPRC=0.8164
+2026-10-23 21:41:32,329 [INFO] [E6] Seed=4 | Scaled Time & Amount | BCBSMOTE + RF | F1=0.8506 | AUPRC=0.8163
+2026-10-23 21:42:07,628 [INFO] [E6] Seed=4 | Unscaled (Raw) | Borderline-SMOTE + RF | F1=0.8555 | AUPRC=0.8235
+2026-10-23 21:42:43,780 [INFO] [E6] Seed=4 | Unscaled (Raw) | BCBSMOTE + RF | F1=0.8439 | AUPRC=0.8119
+2026-10-23 21:42:43,798 [INFO] ======================================================================
+2026-10-23 21:42:43,798 [INFO] EXPERIMENT 7: PAYSIM BENCHMARK (Default 0.5 vs Train-Tuned Threshold)
+2026-10-23 21:42:43,798 [INFO] ======================================================================
+2026-10-23 21:42:51,732 [INFO] [E7] Loaded PaySim in 7.93s (6,362,620 rows, 8,213 frauds)
+2026-10-23 21:42:54,816 [INFO] [E7] 10% Sample: 636,262 rows (821 frauds)
+2026-10-23 21:42:55,065 [INFO] [E7] Seed 0 Test set: 127,253 rows (164 frauds, 127,089 genuine)
+2026-10-23 21:43:18,247 [INFO] [E7] Seed=0 | Plain RF | Default 0.5: F1=0.8678, Rec=0.7805, Prec=0.9771 | Tuned (t=0.4000): F1=0.8687, Rec=0.7866 (22.9s)
+2026-10-23 21:43:39,889 [INFO] [E7] Seed=0 | Borderline-SMOTE | Default 0.5: F1=0.8123, Rec=0.8049, Prec=0.8199 | Tuned (t=0.7000): F1=0.8553, Rec=0.7927 (21.5s)
+2026-10-23 21:44:05,182 [INFO] [E7] Seed=0 | BCBSMOTE-approx | Default 0.5: F1=0.8354, Rec=0.8049, Prec=0.8684 | Tuned (t=0.7500): F1=0.8581, Rec=0.7744 (25.1s)
+2026-10-23 21:44:05,422 [INFO] [E7] Seed 1 Test set: 127,253 rows (164 frauds, 127,089 genuine)
+2026-10-23 21:44:28,542 [INFO] [E7] Seed=1 | Plain RF | Default 0.5: F1=0.8729, Rec=0.7744, Prec=1.0000 | Tuned (t=0.3100): F1=0.8754, Rec=0.7927 (22.8s)
+2026-10-23 21:44:49,831 [INFO] [E7] Seed=1 | Borderline-SMOTE | Default 0.5: F1=0.8635, Rec=0.8293, Prec=0.9007 | Tuned (t=0.7600): F1=0.8716, Rec=0.7866 (21.1s)
+2026-10-23 21:45:18,680 [INFO] [E7] Seed=1 | BCBSMOTE-approx | Default 0.5: F1=0.8474, Rec=0.8293, Prec=0.8662 | Tuned (t=0.6800): F1=0.8763, Rec=0.7988 (28.6s)
+2026-10-23 21:45:19,124 [INFO] [E7] Seed 2 Test set: 127,253 rows (164 frauds, 127,089 genuine)
+2026-10-23 21:45:44,309 [INFO] [E7] Seed=2 | Plain RF | Default 0.5: F1=0.8198, Rec=0.7073, Prec=0.9748 | Tuned (t=0.3200): F1=0.8328, Rec=0.7439 (24.7s)
+2026-10-23 21:46:10,910 [INFO] [E7] Seed=2 | Borderline-SMOTE | Default 0.5: F1=0.8094, Rec=0.7378, Prec=0.8963 | Tuned (t=0.6000): F1=0.8000, Rec=0.7073 (26.4s)
+2026-10-23 21:46:37,797 [INFO] [E7] Seed=2 | BCBSMOTE-approx | Default 0.5: F1=0.8041, Rec=0.7256, Prec=0.9015 | Tuned (t=0.8300): F1=0.8071, Rec=0.6890 (26.7s)
+2026-10-23 21:46:38,035 [INFO] [E7] Seed 3 Test set: 127,253 rows (164 frauds, 127,089 genuine)
+2026-10-23 21:47:01,528 [INFO] [E7] Seed=3 | Plain RF | Default 0.5: F1=0.8339, Rec=0.7195, Prec=0.9916 | Tuned (t=0.2200): F1=0.8227, Rec=0.7500 (23.1s)
+2026-10-23 21:47:23,086 [INFO] [E7] Seed=3 | Borderline-SMOTE | Default 0.5: F1=0.8377, Rec=0.7866, Prec=0.8958 | Tuned (t=0.8400): F1=0.8239, Rec=0.7134 (21.4s)
+2026-10-23 21:47:47,665 [INFO] [E7] Seed=3 | BCBSMOTE-approx | Default 0.5: F1=0.8322, Rec=0.7561, Prec=0.9254 | Tuned (t=0.6100): F1=0.8219, Rec=0.7317 (24.5s)
+2026-10-23 21:47:47,846 [INFO] [E7] Seed 4 Test set: 127,253 rows (164 frauds, 127,089 genuine)
+2026-10-23 21:48:10,591 [INFO] [E7] Seed=4 | Plain RF | Default 0.5: F1=0.8737, Rec=0.7805, Prec=0.9922 | Tuned (t=0.3300): F1=0.8620, Rec=0.7805 (22.5s)
+2026-10-23 21:48:32,771 [INFO] [E7] Seed=4 | Borderline-SMOTE | Default 0.5: F1=0.8517, Rec=0.8232, Prec=0.8824 | Tuned (t=0.8000): F1=0.8776, Rec=0.7866 (22.1s)
+2026-10-23 21:48:57,671 [INFO] [E7] Seed=4 | BCBSMOTE-approx | Default 0.5: F1=0.8581, Rec=0.8110, Prec=0.9110 | Tuned (t=0.7300): F1=0.8639, Rec=0.7744 (24.8s)
+2026-10-23 21:48:58,838 [INFO] ALL EXPERIMENTS COMPLETED SUCCESSFULLY in 19736.54s (328.94 min).
+2026-10-23 21:48:58,838 [INFO] Outputs written to results/phase3_final/
