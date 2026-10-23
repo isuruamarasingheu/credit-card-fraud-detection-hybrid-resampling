@@ -107,9 +107,7 @@ ml reserch/
 │       └── table_4b_feature_pruning_test.csv
 ├── scripts/
 │   ├── run_benchmark.py                       # CLI PaySim benchmark runner (reproduces Table 4 / Figure 9)
-│   ├── run_experiments.py                     # Full ablation & stress-testing pipeline (OpenML 1597)
-│   ├── export_report_to_docx.py               # Generates Word (.docx) document
-│   └── export_report_to_html.py               # Generates MathJax HTML report
+│   └── run_experiments.py                     # Full ablation & stress-testing pipeline (OpenML 1597)
 ├── src/
 │   ├── __init__.py                            # Package init
 │   ├── preprocessing.py                       # Data cleaning, encoding, RobustScaler & splitting
