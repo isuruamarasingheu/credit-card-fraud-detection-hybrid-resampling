@@ -38,7 +38,8 @@ from src.visualization import plot_benchmark_comparison
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run benchmark comparison of sampling techniques")
-    parser.add_argument("--data_path", type=str, default="archive/PS_20174392719_1491204439457_log.csv")
+    parser.add_argument("--data_path", type=str, default="archive/creditcard.csv",
+                        help="Path to CSV dataset file (default: archive/creditcard.csv).")
     parser.add_argument("--sample_size", type=int, default=200000,
                         help="Number of samples to evaluate for benchmark comparison (default: 200,000 for rapid execution).")
     parser.add_argument("--sampling_ratio", type=float, default=0.02)

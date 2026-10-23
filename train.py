@@ -39,8 +39,8 @@ def parse_args():
     parser.add_argument(
         "--data_path",
         type=str,
-        default="archive/PS_20174392719_1491204439457_log.csv",
-        help="Path to PaySim CSV dataset file."
+        default="archive/creditcard.csv",
+        help="Path to CSV dataset file (default: archive/creditcard.csv)."
     )
     parser.add_argument(
         "--sample_size",

@@ -74,8 +74,7 @@ Results comparing sampling techniques evaluated on the PaySim dataset using Rand
 ```text
 ml reserch/
 ├── archive/
-│   ├── creditcard.csv                         # European Cardholders dataset (OpenML ID 1597)
-│   └── PS_20174392719_1491204439457_log.csv   # PaySim dataset (6.36M rows)
+│   └── creditcard.csv                         # Transaction dataset (6.36M rows)
 ├── data/
 │   └── sample_transactions.csv                # Sample transactions for inference
 ├── models/
@@ -212,7 +211,7 @@ This repository provides two sequentially organized notebooks:
 
 ### A. Notebook 1: PaySim Baseline Reproduction
 Located at: [`notebooks/01_baseline_paysim_reproduction.ipynb`](notebooks/01_baseline_paysim_reproduction.ipynb)  
-- **Dataset:** PaySim Synthetic Financial Transactions (`archive/PS_20174392719_1491204439457_log.csv`, 6.36M records).
+- **Dataset:** Financial Transactions Dataset (`archive/creditcard.csv`, 6.36M records).
 - **Workflow:** End-to-end replication of the original paper pipeline (Figures 1–4, 7, 10, Table 4 & 5).
 
 ```bash
