@@ -1,1 +1,39 @@
+# Datasets
 archive/
+*.csv.gz
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Distribution & Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.bak
+~$*

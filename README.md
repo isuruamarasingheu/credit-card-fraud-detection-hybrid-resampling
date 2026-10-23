@@ -71,9 +71,10 @@ Results comparing sampling techniques evaluated on the PaySim dataset using Rand
 
 ## 📁 3. Project Directory Structure
 
-```
+```text
 ml reserch/
 ├── archive/
+│   ├── creditcard.csv                         # European Cardholders dataset (OpenML ID 1597)
 │   └── PS_20174392719_1491204439457_log.csv   # PaySim dataset (6.36M rows)
 ├── data/
 │   └── sample_transactions.csv                # Sample transactions for inference
@@ -81,21 +82,43 @@ ml reserch/
 │   ├── fraud_detection_model.joblib           # Trained Random Forest model checkpoint
 │   └── label_encoder.joblib                   # Fitted transaction type encoder
 ├── notebooks/
-│   └── credit_card_fraud_detection.ipynb      # Interactive Jupyter notebook
+│   ├── 01_baseline_paysim_reproduction.ipynb  # Baseline reproduction of Alamri & Ykhlef (2024)
+│   └── 02_enhanced_hybrid_fraud_detection.ipynb # Enhanced framework with scale fix & anti-leakage CV
+├── reports/
+│   └── technical_review_report.docx           # Complete formal technical review report
 ├── results/
-│   ├── figure_1_class_distribution.png        # Normal vs Fraud distribution
-│   ├── figure_10_auprc_curve.png              # Precision-Recall curve
-│   ├── table_5_confusion_matrix.png           # Confusion matrix heatmap
-│   └── evaluation_metrics_summary.csv         # Exported metrics
+│   ├── paysim_baseline/                       # PaySim reproduction outputs & figures
+│   │   ├── evaluation_metrics_summary.csv
+│   │   ├── figure_1_class_distribution.png
+│   │   ├── figure_10_auprc_curve.png
+│   │   ├── sample_predictions.csv
+│   │   └── table_5_confusion_matrix.png
+│   └── report_assets/                         # OpenML 1597 publication figures and CSV tables
+│       ├── experiment_metrics.json
+│       ├── figure_1_pr_curve_comparison.png
+│       ├── figure_2_confusion_matrices.png
+│       ├── figure_3_cost_sensitive_curve.png
+│       ├── figure_4_ablation_study.png
+│       ├── figure_5_classifier_benchmark.png
+│       ├── figure_6_noise_stress_curve.png
+│       ├── table_1_baseline_vs_bcbsmote.csv
+│       ├── table_2_ablation_study.csv
+│       ├── table_3_classifier_benchmark.csv
+│       ├── table_4a_noise_stress_test.csv
+│       └── table_4b_feature_pruning_test.csv
+├── scripts/
+│   ├── run_benchmark.py                       # CLI PaySim benchmark runner (reproduces Table 4 / Figure 9)
+│   ├── run_experiments.py                     # Full ablation & stress-testing pipeline (OpenML 1597)
+│   ├── export_report_to_docx.py               # Generates Word (.docx) document
+│   └── export_report_to_html.py               # Generates MathJax HTML report
 ├── src/
 │   ├── __init__.py                            # Package init
-│   ├── preprocessing.py                       # Data cleaning, encoding & stratified splitting
+│   ├── preprocessing.py                       # Data cleaning, encoding, RobustScaler & splitting
 │   ├── sampling.py                            # TomekLinks, BCBSMOTE, and baseline samplers
-│   ├── model.py                               # FraudDetectionModel wrapper & threshold tuning
-│   └── visualization.py                       # Plotting utilities for IEEE Access figures
+│   ├── model.py                               # FraudDetectionModel wrapper, threshold & cost curves
+│   └── visualization.py                       # Publication-grade plotting utilities
 ├── train.py                                   # CLI script for model training
 ├── predict.py                                 # CLI script for real-time and batch scoring
-├── run_benchmark.py                           # CLI script for Table 4 / Figure 9 comparisons
 ├── requirements.txt                           # Python dependencies
 └── README.md                                  # Complete project documentation
 ```
@@ -160,29 +183,46 @@ Risk Level        : LOW
 
 ### B. Batch Prediction on a CSV File
 ```bash
-python predict.py --input_csv data/sample_transactions.csv --output_csv results/predictions.csv
+python predict.py --input_csv data/sample_transactions.csv --output_csv results/paysim_baseline/predictions.csv
 ```
 
 ---
 
-## 📈 6. Running Benchmark Comparisons
+## 📈 6. Running Benchmark & Empirical Experiments
 
-To reproduce the benchmark comparison table (Table 4) and comparison bar chart (Figure 9):
+### A. PaySim Resampling Benchmark (Paper Reproduction)
+To reproduce the benchmark comparison table (Table 4) and bar chart (Figure 9):
 ```bash
-python run_benchmark.py --sample_size 200000
+python scripts/run_benchmark.py --sample_size 200000
 ```
-Outputs are saved to `results/table_4_benchmark_evaluation.csv` and `results/figure_9_benchmark_comparison.png`.
+Outputs are saved to `results/paysim_baseline/`.
+
+### B. Full Empirical Evaluation Suite (OpenML 1597 Dataset)
+To execute the complete 4-stage ablation study, multi-classifier comparison, threshold tuning, and stress tests:
+```bash
+python scripts/run_experiments.py
+```
+Outputs (5 summary tables and 6 publication-grade figures) are saved to `results/report_assets/`.
 
 ---
 
 ## 📓 7. Interactive Jupyter Notebooks
 
-This repository provides two dedicated notebooks:
+This repository provides two sequentially organized notebooks:
 
-### A. Phase 1 Enhanced Notebook (Coursework Phase 2/3 Preparation)
-Located at: [`notebooks/phase1_enhanced_fraud_detection.ipynb`](notebooks/phase1_enhanced_fraud_detection.ipynb)  
+### A. Notebook 1: PaySim Baseline Reproduction
+Located at: [`notebooks/01_baseline_paysim_reproduction.ipynb`](notebooks/01_baseline_paysim_reproduction.ipynb)  
+- **Dataset:** PaySim Synthetic Financial Transactions (`archive/PS_20174392719_1491204439457_log.csv`, 6.36M records).
+- **Workflow:** End-to-end replication of the original paper pipeline (Figures 1–4, 7, 10, Table 4 & 5).
+
+```bash
+jupyter notebook notebooks/01_baseline_paysim_reproduction.ipynb
+```
+
+### B. Notebook 2: Enhanced Hybrid Fraud Detection (Research Critique & Solutions)
+Located at: [`notebooks/02_enhanced_hybrid_fraud_detection.ipynb`](notebooks/02_enhanced_hybrid_fraud_detection.ipynb)  
 - **Dataset:** European Cardholders Credit Card Transactions (`archive/creditcard.csv`, OpenML ID 1597, 284,807 transactions).
-- **Core Enhancements Implemented from Phase 1 Document:**
+- **Core Enhancements Implemented:**
   1. **Deduplication:** Addresses 9,144 duplicate rows to prevent cross-validation leakage.
   2. **Scale Dominance Correction:** Replaces unscaled distances with training-isolated `RobustScaler` (solves `Amount` swamping $V_1–V_{28}$).
   3. **Strict Anti-Leakage CV:** Implements Stratified 5-Fold Cross-Validation where scaling and BCBSMOTE resampling happen strictly inside training folds.
@@ -192,16 +232,7 @@ Located at: [`notebooks/phase1_enhanced_fraud_detection.ipynb`](notebooks/phase1
   7. **Stress-Testing Suite:** Evaluates model resilience under label noise injection (1%–10%) and critical feature degradation ($V_{14}, V_{17}, V_{12}$).
 
 ```bash
-jupyter notebook notebooks/phase1_enhanced_fraud_detection.ipynb
-```
-
-### B. Original Paper Baseline Notebook
-Located at: [`notebooks/credit_card_fraud_detection.ipynb`](notebooks/credit_card_fraud_detection.ipynb)  
-- **Dataset:** PaySim Synthetic Financial Transactions (`archive/PS_20174392719_1491204439457_log.csv`, 6.36M records).
-- **Workflow:** End-to-end replication of the original paper pipeline (Figures 1–4, 7, 10, Table 4 & 5).
-
-```bash
-jupyter notebook notebooks/credit_card_fraud_detection.ipynb
+jupyter notebook notebooks/02_enhanced_hybrid_fraud_detection.ipynb
 ```
 
 ---

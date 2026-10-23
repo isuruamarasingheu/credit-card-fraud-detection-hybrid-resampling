@@ -1,12 +1,13 @@
 
 """
-Automated Experiment Runner for Phase 2 & Phase 3 Technical Review Report.
+Automated Empirical Experiment Runner for Fraud Detection Hybrid Resampling Framework.
 Dataset: European Cardholders Credit Card Transactions (archive/creditcard.csv, OpenML ID 1597).
 Executes:
 1. Baseline vs Authors' BCBSMOTE Benchmark
 2. 4-Stage Systematic Ablation Study
 3. Multi-Classifier Comparison (Logistic Regression, Random Forest, XGBoost, Balanced RF)
-4. Stress-Testing Suite (Label Noise Injection & Feature Corruption)
+4. Cost-Sensitive Threshold Financial Optimization
+5. Stress-Testing Suite (Label Noise Injection & Feature Corruption)
 Exports:
 - Tables: results/report_assets/*.csv
 - Metrics: results/report_assets/experiment_metrics.json
@@ -39,7 +40,7 @@ from imblearn.ensemble import BalancedRandomForestClassifier
 import xgboost as xgb
 
 # Project modules
-sys.path.append(os.path.abspath('.'))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.sampling import TomekLinksUndersampler, BCBSMOTEOversampler
 
 # Style

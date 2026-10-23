@@ -31,7 +31,7 @@ def parse_args():
     # Batch inference
     parser.add_argument("--input_csv", type=str, default=None,
                         help="Path to input CSV file for batch predictions.")
-    parser.add_argument("--output_csv", type=str, default="results/predictions.csv",
+    parser.add_argument("--output_csv", type=str, default="results/paysim_baseline/predictions.csv",
                         help="Path to output CSV file for batch predictions.")
     
     # Single transaction inference

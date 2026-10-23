@@ -28,6 +28,9 @@ from sklearn.metrics import (
     average_precision_score
 )
 
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.preprocessing import load_and_preprocess_data
 from src.sampling import get_baseline_sampler
 from src.visualization import plot_benchmark_comparison
@@ -41,7 +44,7 @@ def parse_args():
     parser.add_argument("--sampling_ratio", type=float, default=0.02)
     parser.add_argument("--n_estimators", type=int, default=40)
     parser.add_argument("--max_depth", type=int, default=15)
-    parser.add_argument("--output_dir", type=str, default="results")
+    parser.add_argument("--output_dir", type=str, default="results/paysim_baseline")
     return parser.parse_args()
 
 

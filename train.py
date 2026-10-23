@@ -93,7 +93,7 @@ def parse_args():
     parser.add_argument(
         "--output_dir",
         type=str,
-        default="results",
+        default="results/paysim_baseline",
         help="Directory to save evaluation plots and metrics."
     )
     return parser.parse_args()
