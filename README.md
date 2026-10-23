@@ -4,7 +4,7 @@
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.7+-orange.svg)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Implementation of the fraud detection architecture proposed in the research paper:
+Implementation, replication, and critical stress-testing of the fraud detection architecture proposed in:
 > **"Hybrid Undersampling and Oversampling for Handling Imbalanced Credit Card Data"**  
 > *Maram Alamri and Mourad Ykhlef*  
 > **IEEE Access**, vol. 12, pp. 14050–14060, 2024.  
@@ -14,69 +14,90 @@ Implementation of the fraud detection architecture proposed in the research pape
 
 ## 📌 1. Paper Overview & Methodology
 
-Financial fraud detection is characterized by severe class imbalance—fraudulent events typically account for less than **0.13%** of all transactions. Conventional sampling techniques (such as standard SMOTE or random undersampling) suffer from:
-- **Overfitting & Noise Generation**: Oversampling without clustering creates synthetic instances in noisy or overlapping regions.
-- **Information Loss**: Aggressive undersampling discards crucial decision patterns from the majority class.
+Financial fraud detection is characterized by extreme class imbalance—fraudulent events typically account for less than **0.17%** of transactions. Conventional sampling techniques (standard SMOTE, ADASYN, random undersampling) suffer from:
+- **Noise Generation & Overlapping**: Oversampling without clustering creates synthetic instances inside majority-class territory.
+- **Information Loss**: Aggressive undersampling discards legitimate transaction patterns.
 
-### 🔬 Proposed Hybrid Resampling Architecture (Figure 5)
+### Proposed Hybrid Resampling Architecture (BCBSMOTE)
 
 ```mermaid
 graph LR
-    A[Imbalanced PaySim Dataset] --> B[Majority Class: Genuine]
+    A[Imbalanced Dataset] --> B[Majority Class: Genuine]
     A --> C[Minority Class: Fraud]
     B --> D[Tomek Links Undersampling]
     C --> E[BIRCH Clustering]
-    E --> F[Borderline-SMOTE per Cluster: BCBSMOTE]
-    D --> G[Balanced & Noise-Cleaned Dataset]
+    E --> F[Borderline-SMOTE per Cluster]
+    D --> G[Hybrid Resampled Dataset]
     F --> G
     G --> H[Random Forest Classifier]
-    H --> I[Evaluation Metrics: F1, Recall, Precision, AUPRC]
+    H --> I[Evaluation: F1, AUPRC, Recall, Precision, MCC]
 ```
 
 1. **Tomek Links Undersampling (Algorithm 1)**:
    - Identifies pairs $(x, y)$ where $x \in \text{majority}$ and $y \in \text{minority}$ are mutual nearest neighbors.
-   - Eliminates the majority sample $x$ to clear boundary noise and clarify decision margins.
+   - Eliminates the majority sample $x$ to clear boundary overlap.
 2. **BIRCH Clustering Borderline SMOTE - BCBSMOTE (Algorithms 2 & 3)**:
-   - **Clustering (BIRCH)**: Partitions minority instances using a CF tree to capture local sub-structures.
-   - **Noise Filtering**: Clusters smaller than `cluster_size = 5` are dropped.
-   - **Proportional Sample Allocation**: Quotas are distributed proportionally across clusters based on their member count.
-   - **Borderline-SMOTE (Algorithm 2)**: Identifies minority points in the **Danger** zone ($m/2 \le m' < m$ majority neighbors) and interpolates locally within the cluster:
-     $$x_{new} = x_i + \beta (x_{zi} - x_i), \quad \beta \in [0, 1]$$
-3. **Random Forest Classifier (Section V.D)**:
-   - Trained on the balanced, resampled feature space.
-   - Evaluated on the held-out 20% test partition (1.27 million transactions).
+   - **BIRCH Clustering**: Partitions minority instances using a CF-tree to capture localized fraud topologies.
+   - **Outlier Filtering**: Clusters smaller than `cluster_size = 5` are treated as noise and excluded from oversampling.
+   - **Proportional Allocation**: Quotas are distributed proportionally across valid clusters.
+   - **Borderline-SMOTE**: Generates synthetic points strictly from samples in the **Danger** zone ($m/2 \le m' < m$ majority neighbors).
+3. **Classification & Evaluation**:
+   - Random Forest trained on resampled feature space.
+   - Strict 80/20 train/test split where scaling and resampling occur **only on training data** to avoid data leakage.
 
 ---
 
-## 📊 2. Comparative Benchmark Results
+## 📊 2. Datasets Used in This Study
 
-Results comparing sampling techniques evaluated on the PaySim dataset using Random Forest:
+| Dataset | File | Transactions | Frauds | Fraud Ratio | Source / Role |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **European Cardholders (ULB)** | `archive/creditcard.csv` | 284,807 (283,726 clean) | 492 (473 clean) | 0.1667% | Primary Phase 3 evaluation & stress-testing dataset. |
+| **PaySim Mobile Money** | `archive/paysim.csv` | 6,362,620 | 8,213 | 0.1291% | Original paper dataset (synthetic mobile money simulator). |
 
-| Resampling Method | Accuracy | F1-Score | Recall | Precision | AUPRC |
+*Note on ULB Deduplication: Removing exact duplicate rows across all 31 columns (including `Time`) removes 1,081 records (19 frauds, 1,062 genuine), leaving 283,726 records (473 frauds). When `Time` is omitted, 9,144 duplicate rows are identified (see [`results/phase3_final/FACTS.md`](results/phase3_final/FACTS.md)).*
+
+---
+
+## 🔬 3. Phase 3 Empirical Benchmark Results (Seeds 0–4 Average)
+
+All models evaluated with fixed settings: `RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=seed)` on untouched 20% test sets across seeds `0, 1, 2, 3, 4`. Scaling (`RobustScaler` on `Time` and `Amount`) and resampling are isolated strictly inside training folds.
+
+### Table E1: European Cardholders Dataset (ULB)
+
+| Method | Precision | Recall | F1-Score | AUPRC | MCC |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **RF with SMOTE** | 99.92% | 77.71% | 97.07% | 64.78% | 62.89% |
-| **RF with B-SMOTE** | 99.95% | 84.67% | 89.47% | 80.37% | 71.92% |
-| **RF with ADASYN** | 99.92% | 76.98% | 97.80% | 63.46% | 62.07% |
-| **RF with SMOTE-Tomek** | 99.92% | 77.81% | 97.44% | 64.76% | 63.11% |
-| **RF with SMOTEENN** | 99.90% | 71.65% | 97.26% | 56.72% | 55.17% |
-| **Hybrid Tomek links BCBSMOTE (Proposed)** | **99.95%** | **85.20%** | **89.53%** | **81.27%** | **72.77%** |
+| **1. Plain Random Forest (No Resampling)** | **0.9627 ± 0.0195** | 0.7642 ± 0.0346 | **0.8518 ± 0.0272** | 0.8175 ± 0.0328 | **0.8574 ± 0.0259** |
+| **2. Tomek Links Only + RF** | 0.9483 ± 0.0201 | 0.7726 ± 0.0303 | 0.8513 ± 0.0242 | 0.8138 ± 0.0382 | 0.8557 ± 0.0235 |
+| **3a. Borderline-SMOTE (ratio=0.05) + RF** | 0.9281 ± 0.0266 | 0.7895 ± 0.0307 | 0.8531 ± 0.0281 | 0.8243 ± 0.0378 | 0.8557 ± 0.0279 |
+| **3b. Borderline-SMOTE (ratio=0.02) + RF** | 0.9217 ± 0.0220 | 0.7937 ± 0.0274 | 0.8528 ± 0.0241 | **0.8272 ± 0.0361** | 0.8550 ± 0.0239 |
+| **4a. BCBSMOTE (ratio=0.05) + RF** | 0.9504 ± 0.0230 | 0.7663 ± 0.0310 | 0.8483 ± 0.0256 | 0.8136 ± 0.0387 | 0.8531 ± 0.0249 |
+| **4b. BCBSMOTE (ratio=0.02) + RF** | 0.9504 ± 0.0230 | 0.7663 ± 0.0310 | 0.8483 ± 0.0256 | 0.8139 ± 0.0390 | 0.8531 ± 0.0249 |
+| **5. XGBoost (scale_pos_weight, no resamp)** | 0.7969 ± 0.0342 | 0.8042 ± 0.0330 | 0.8000 ± 0.0250 | 0.8110 ± 0.0369 | 0.7999 ± 0.0252 |
+| **6. XGBoost + BCBSMOTE** | 0.9391 ± 0.0378 | 0.7705 ± 0.0292 | 0.8463 ± 0.0284 | 0.8192 ± 0.0423 | 0.8503 ± 0.0286 |
+| **7. Logistic Regression (balanced)** | 0.0631 ± 0.0050 | **0.8905 ± 0.0141** | 0.1179 ± 0.0087 | 0.7070 ± 0.0518 | 0.2336 ± 0.0098 |
+| **8. Balanced Random Forest** | 0.1190 ± 0.0118 | 0.8611 ± 0.0310 | 0.2088 ± 0.0181 | 0.7503 ± 0.0567 | 0.3173 ± 0.0161 |
 
-*Confusion matrix for the proposed method on the test set (Table 5):*
-- **True Positives (Fraud Caught)**: 1,471 / 1,643 (**89.53% Recall**)
-- **False Positives (False Alarms)**: 339 (**81.27% Precision**)
-- **True Negatives (Legitimate Cleared)**: 1,270,542
-- **False Negatives (Fraud Missed)**: 172
+*Key finding: On clean data, Plain Random Forest is competitive with or marginally exceeds BCBSMOTE in F1 (0.8518 vs 0.8483) because resampling introduces small precision penalties. However, BCBSMOTE proves significantly superior under label noise (see Table E2).*
+
+### Table E7: PaySim Benchmark (10% Stratified Sample, Seeds 0–4)
+
+| Method | Default Threshold 0.5 F1 | Default 0.5 Recall | Default 0.5 Precision | AUPRC | Train-Tuned Threshold F1 | Tuned Threshold |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Plain RF** | **0.8536 ± 0.0250** | 0.7524 ± 0.0360 | **0.9871 ± 0.0108** | 0.8441 ± 0.0363 | 0.8523 ± 0.0232 | $0.32 \pm 0.06$ |
+| **Borderline-SMOTE** | 0.8349 ± 0.0238 | **0.7963 ± 0.0367** | 0.8790 ± 0.0338 | **0.8533 ± 0.0305** | 0.8457 ± 0.0329 | $0.74 \pm 0.09$ |
+| **BCBSMOTE-approx** | 0.8354 ± 0.0203 | 0.7854 ± 0.0430 | 0.8945 ± 0.0262 | 0.8491 ± 0.0302 | 0.8455 ± 0.0295 | $0.72 \pm 0.08$ |
 
 ---
 
-## 📁 3. Project Directory Structure
+## 📁 4. Project Directory Structure
 
 ```text
 ml reserch/
 ├── archive/
-│   └── creditcard.csv                         # Transaction dataset (6.36M rows)
+│   ├── creditcard.csv                         # European Cardholders ULB dataset (284,807 rows)
+│   └── paysim.csv                             # PaySim synthetic transaction dataset (6.36M rows)
 ├── data/
-│   └── sample_transactions.csv                # Sample transactions for inference
+│   └── sample_transactions.csv                # Sample payload for real-time inference
 ├── models/
 │   ├── fraud_detection_model.joblib           # Trained Random Forest model checkpoint
 │   └── label_encoder.joblib                   # Fitted transaction type encoder
@@ -84,74 +105,71 @@ ml reserch/
 │   ├── 01_baseline_paysim_reproduction.ipynb  # Baseline reproduction of Alamri & Ykhlef (2024)
 │   └── 02_enhanced_hybrid_fraud_detection.ipynb # Enhanced framework with scale fix & anti-leakage CV
 ├── reports/
-│   └── technical_review_report.docx           # Complete formal technical review report
+│   ├── Phase 3 – Critical Review and Stress-Testing of BCBSMOTE.md # Final coursework report draft
+│   └── technical_review_report.md             # Formal review report
 ├── results/
-│   ├── paysim_baseline/                       # PaySim reproduction outputs & figures
-│   │   ├── evaluation_metrics_summary.csv
-│   │   ├── figure_1_class_distribution.png
-│   │   ├── figure_10_auprc_curve.png
-│   │   ├── sample_predictions.csv
-│   │   └── table_5_confusion_matrix.png
-│   └── report_assets/                         # OpenML 1597 publication figures and CSV tables
-│       ├── experiment_metrics.json
-│       ├── figure_1_pr_curve_comparison.png
-│       ├── figure_2_confusion_matrices.png
-│       ├── figure_3_cost_sensitive_curve.png
-│       ├── figure_4_ablation_study.png
-│       ├── figure_5_classifier_benchmark.png
-│       ├── figure_6_noise_stress_curve.png
-│       ├── table_1_baseline_vs_bcbsmote.csv
-│       ├── table_2_ablation_study.csv
-│       ├── table_3_classifier_benchmark.csv
-│       ├── table_4a_noise_stress_test.csv
-│       └── table_4b_feature_pruning_test.csv
+│   ├── phase3_final/                          # Rigorous 5-seed empirical outputs & audit
+│   │   ├── FACTS.md                           # Verification of all 9 audit questions with line numbers
+│   │   ├── e1_summary.csv                     # Main benchmark summary table (mean ± std)
+│   │   ├── e1_per_seed.csv                    # Seed-level results (seeds 0-4)
+│   │   ├── e1_paired_diff.csv                 # Paired differences (BCBSMOTE - RF)
+│   │   ├── e2_noise_summary.csv               # Label noise stress test (symmetric vs fraud-only)
+│   │   ├── e2_noise_per_seed.csv              # Per-seed noise records & label flip counts
+│   │   ├── e3_feature_removal.csv             # Feature pruning test (dynamic vs hard-coded top-3)
+│   │   ├── e4_dimensionality.csv              # Dimensionality stress test (0, 20, 100 noise features)
+│   │   ├── e5_cost_threshold.csv              # 5-fold CV threshold optimization vs optimistic test scan
+│   │   ├── e6_scaling.csv                     # Scaling effect (scaled vs unscaled Time and Amount)
+│   │   ├── e7_paysim.csv                      # PaySim 10% benchmark (default vs tuned threshold)
+│   │   ├── plot_e2_noise.png                  # Robustness degradation plot under label noise
+│   │   ├── plot_e4_dimensionality.png         # Performance degradation across dimensionality
+│   │   ├── run_info.json                      # Metadata, package versions, runtimes & resampling audit log
+│   │   └── run_log.txt                        # Complete execution log with warning traces
+│   ├── paysim_baseline/                       # PaySim baseline reproduction outputs
+│   └── report_assets/                         # Initial exploratory assets
 ├── scripts/
+│   ├── run_phase3_final_experiments.py        # Master 5-seed empirical runner (E1–E7)
 │   ├── run_benchmark.py                       # CLI PaySim benchmark runner (reproduces Table 4 / Figure 9)
-│   └── run_experiments.py                     # Full ablation & stress-testing pipeline (OpenML 1597)
+│   └── run_experiments.py                     # Exploratory single-seed experiment script
 ├── src/
 │   ├── __init__.py                            # Package init
-│   ├── preprocessing.py                       # Data cleaning, encoding, RobustScaler & splitting
+│   ├── preprocessing.py                       # Data loading, cleaning, encoding & split
 │   ├── sampling.py                            # TomekLinks, BCBSMOTE, and baseline samplers
-│   ├── model.py                               # FraudDetectionModel wrapper, threshold & cost curves
-│   └── visualization.py                       # Publication-grade plotting utilities
+│   ├── model.py                               # Model wrapper, threshold & cost curves
+│   └── visualization.py                       # Plotting utilities
 ├── train.py                                   # CLI script for model training
 ├── predict.py                                 # CLI script for real-time and batch scoring
 ├── requirements.txt                           # Python dependencies
-└── README.md                                  # Complete project documentation
+└── README.md                                  # Complete repository documentation
 ```
 
 ---
 
-## 🚀 4. Quickstart & Installation
+## 🚀 5. Quickstart & Execution
 
-### Step 1: Install Dependencies
+### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 2: Train the Model
-
-To train the proposed model on the dataset:
+### 2. Run the Full Phase 3 Empirical Experiment Suite
+To reproduce all final 5-seed averaged tables (E1–E7), audit logs, and figures:
 ```bash
-# Fast training on a representative subset (200k rows):
+python scripts/run_phase3_final_experiments.py
+```
+*Outputs are saved to `results/phase3_final/`.*
+
+### 3. Model Training & Inference CLI
+
+#### Train Model
+```bash
+# Train on PaySim subsample (200,000 rows):
 python train.py --sample_size 200000
 
-# Full training on all 6.36 million records:
-python train.py
+# Train with custom settings:
+python train.py --sampling_ratio 0.05 --n_estimators 100 --max_depth 15
 ```
 
-Optional training arguments:
-- `--sampling_ratio`: Target ratio of minority to majority class (default: `0.02`).
-- `--cluster_size`: Minimum BIRCH cluster size (default: `5`).
-- `--n_estimators`: Number of decision trees in Random Forest (default: `50`).
-- `--max_depth`: Maximum tree depth (default: `15`).
-- `--model_save_path`: Path to save trained checkpoint (default: `models/fraud_detection_model.joblib`).
-
----
-
-## 🔮 5. Running Predictions & Inference
-
-### A. Predict on a Single Transaction
+#### Run Single Transaction Inference
 ```bash
 python predict.py \
   --step 1 \
@@ -161,81 +179,28 @@ python predict.py \
   --oldbalanceDest 0.0 \
   --newbalanceDest 0.0
 ```
-Output:
-```text
-==================================================
-      TRANSACTION FRAUD DETECTION RESULT
-==================================================
-Transaction Type  : PAYMENT
-Amount            : $1,000.00
-Initial Bal (Orig): $5,000.00
-Initial Bal (Dest): $0.00
-New Bal (Dest)    : $0.00
---------------------------------------------------
-Fraud Probability : 3.33%
-Prediction        : [LEGITIMATE] (Class 0)
-Risk Level        : LOW
-==================================================
-```
 
-### B. Batch Prediction on a CSV File
+#### Run Batch Prediction on CSV
 ```bash
-python predict.py --input_csv data/sample_transactions.csv --output_csv results/paysim_baseline/predictions.csv
+python predict.py --input_csv data/sample_transactions.csv --output_csv results/phase3_final/sample_predictions.csv
 ```
 
 ---
 
-## 📈 6. Running Benchmark & Empirical Experiments
+## 🔍 6. Summary of Key Findings from Phase 3 Stress-Testing
 
-### A. PaySim Resampling Benchmark (Paper Reproduction)
-To reproduce the benchmark comparison table (Table 4) and bar chart (Figure 9):
-```bash
-python scripts/run_benchmark.py --sample_size 200000
-```
-Outputs are saved to `results/paysim_baseline/`.
-
-### B. Full Empirical Evaluation Suite (OpenML 1597 Dataset)
-To execute the complete 4-stage ablation study, multi-classifier comparison, threshold tuning, and stress tests:
-```bash
-python scripts/run_experiments.py
-```
-Outputs (5 summary tables and 6 publication-grade figures) are saved to `results/report_assets/`.
-
----
-
-## 📓 7. Interactive Jupyter Notebooks
-
-This repository provides two sequentially organized notebooks:
-
-### A. Notebook 1: PaySim Baseline Reproduction
-Located at: [`notebooks/01_baseline_paysim_reproduction.ipynb`](notebooks/01_baseline_paysim_reproduction.ipynb)  
-- **Dataset:** Financial Transactions Dataset (`archive/creditcard.csv`, 6.36M records).
-- **Workflow:** End-to-end replication of the original paper pipeline (Figures 1–4, 7, 10, Table 4 & 5).
-
-```bash
-jupyter notebook notebooks/01_baseline_paysim_reproduction.ipynb
-```
-
-### B. Notebook 2: Enhanced Hybrid Fraud Detection (Research Critique & Solutions)
-Located at: [`notebooks/02_enhanced_hybrid_fraud_detection.ipynb`](notebooks/02_enhanced_hybrid_fraud_detection.ipynb)  
-- **Dataset:** European Cardholders Credit Card Transactions (`archive/creditcard.csv`, OpenML ID 1597, 284,807 transactions).
-- **Core Enhancements Implemented:**
-  1. **Deduplication:** Addresses 9,144 duplicate rows to prevent cross-validation leakage.
-  2. **Scale Dominance Correction:** Replaces unscaled distances with training-isolated `RobustScaler` (solves `Amount` swamping $V_1–V_{28}$).
-  3. **Strict Anti-Leakage CV:** Implements Stratified 5-Fold Cross-Validation where scaling and BCBSMOTE resampling happen strictly inside training folds.
-  4. **Comprehensive Metric Suite:** Computes **AUPRC**, **MCC**, **F1-Score**, **Precision**, **Recall**, and **Cost-Sensitive Financial Loss**.
-  5. **Systematic Ablation Study:** Evaluates *None vs Tomek Links vs Borderline-SMOTE vs Full BCBSMOTE*.
-  6. **Model Benchmarking:** Compares Random Forest against Logistic Regression, XGBoost, and Balanced Random Forest.
-  7. **Stress-Testing Suite:** Evaluates model resilience under label noise injection (1%–10%) and critical feature degradation ($V_{14}, V_{17}, V_{12}$).
-
-```bash
-jupyter notebook notebooks/02_enhanced_hybrid_fraud_detection.ipynb
-```
+1. **Baseline Competitiveness**: On clean, uncorrupted credit card data, Random Forest without resampling achieves an $F_1$-score of **0.8518 ± 0.0272**, matching or marginally exceeding BCBSMOTE (**0.8483 ± 0.0256**). Paired seed tests show RF wins on 3/5 seeds and ties on 1/5.
+2. **Robustness to Missed Frauds (Realistic Noise)**: When training fraud labels are missed or delayed (fraud-only noise), BCBSMOTE outperforms Plain RF substantially:
+   - At 10% missed frauds: BCBSMOTE $F_1 = 0.8467$ vs RF $0.8323$
+   - At 20% missed frauds: BCBSMOTE $F_1 = 0.8278$ vs RF $0.7911$ ($+3.7\%$)
+   - At 30% missed frauds: BCBSMOTE $F_1 = 0.8106$ vs RF $0.7155$ ($+9.5\%$, recall $70.9\%$ vs $56.8\%$)
+3. **Vulnerability to Symmetric Noise**: Randomly flipping labels across the entire training set flips predominantly genuine points into fraud, causing BCBSMOTE to synthesize fraud clusters in legitimate transaction space at 1% noise ($F_1$ drops to 0.7128 vs 0.7587 for RF). At 5% and 10% noise, the false fraud count exceeds the target ratio, deactivating oversampling entirely (0 synthetic samples generated).
+4. **Curse of Dimensionality**: Adding 20 and 100 noise features degrades $F_1$ from 0.85 to 0.82 across all methods, while training runtime roughly triples.
+5. **Cost Optimization**: Tuning the decision threshold on 5-fold training out-of-fold cross-validation reduces total financial loss from **$11,138** (at default 0.5) to **$8,800** (at chosen threshold $\approx 0.08$), achieving a real saving of **$2,338 ± $1,049** on the test set.
 
 ---
 
 ## 📖 Citation
-If you use this model or code in your research, please cite:
 ```bibtex
 @ARTICLE{10410196,
   author={Alamri, Maram and Ykhlef, Mourad},
