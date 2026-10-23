@@ -54,7 +54,7 @@ graph LR
 | **European Cardholders (ULB)** | `archive/creditcard.csv` | 284,807 (283,726 clean) | 492 (473 clean) | 0.1667% | Primary Phase 3 evaluation & stress-testing dataset. |
 | **PaySim Mobile Money** | `archive/paysim.csv` | 6,362,620 | 8,213 | 0.1291% | Original paper dataset (synthetic mobile money simulator). |
 
-*Note on ULB Deduplication: Removing exact duplicate rows across all 31 columns (including `Time`) removes 1,081 records (19 frauds, 1,062 genuine), leaving 283,726 records (473 frauds). When `Time` is omitted, 9,144 duplicate rows are identified (see [`results/phase3_final/FACTS.md`](results/phase3_final/FACTS.md)).*
+*Note on ULB Deduplication: Removing exact duplicate rows across all 31 columns (including `Time`) removes 1,081 records (19 frauds, 1,062 genuine), leaving 283,726 records (473 frauds). When `Time` is omitted, 9,144 duplicate rows are identified .*
 
 ---
 
